@@ -3,8 +3,8 @@ import "../../styles/sidebar.scss";
 
 export const SideBar = () => {
 	return (
-		<div>
-			<ul className="nav flex-column">
+		<div className="h-100  sidenav">
+			<ul className="nav flex-column  ">
 				<li className="nav-item">
 					<a className="nav-link active" href="#">
 						Home
@@ -12,7 +12,12 @@ export const SideBar = () => {
 				</li>
 				<li className="nav-item">
 					<a className="nav-link" href="#">
-						Clasname 1
+						ClassName 1
+					</a>
+				</li>
+				<li className="nav-item">
+					<a className="nav-link" href="#">
+						ClassName 2
 					</a>
 				</li>
 				<li className="nav-item">
@@ -25,8 +30,10 @@ export const SideBar = () => {
 						Admin
 					</a>
 				</li>
-				<hr />
-				<h3 className="disabled">Support</h3>
+				{/* <div className="separador" /> */}
+				<div className="dropdown-divider" />
+
+				<h5 className="disabled">Support</h5>
 				<li className="nav-item ">
 					<a className="nav-link disabled" href="#">
 						Support
