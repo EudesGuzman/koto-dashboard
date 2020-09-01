@@ -33,6 +33,7 @@ export const Navbar = () => {
 				</form>
 			</div>
         </nav> */
+
 		<div className="navbar">
 			<div className="navbar__left">
 				<Link>
