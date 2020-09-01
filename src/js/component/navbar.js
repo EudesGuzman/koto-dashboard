@@ -6,7 +6,7 @@ import logo from "../../img/icon-kotokan.png";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-expand-lg color-principal">
+		/* 	<nav className="navbar navbar-expand-lg color-principal">
 			<a className="navbar-brand" href="#">
 				<img src={logo} />
 			</a>
@@ -32,7 +32,24 @@ export const Navbar = () => {
 					</ul>
 				</form>
 			</div>
-		</nav>
+        </nav> */
+		<div className="navbar">
+			<div className="navbar__left">
+				<Link>
+					<img src={logo} />
+				</Link>
+
+				<p className="navbar__input">Kotokan for school</p>
+
+				<span className="badge badge-secondary">Beta</span>
+
+				<Link className="navbar__link">Home</Link>
+			</div>
+
+			<div>
+				Log out <ExitToAppIcon />
+			</div>
+		</div>
 	);
 };
 
