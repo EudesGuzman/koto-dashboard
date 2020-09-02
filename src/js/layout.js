@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+import "../styles/layout.scss";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
+import { Login } from "./views/login";
 
 import injectContext from "./store/appContext";
 
-/* import { Navbar } from "./component/navbar";
-import { SideBar } from "./component/sidebar"; */
-
-import { Login } from "./views/login";
+import { Navbar } from "./component/navbar";
+import { SideBar } from "./component/sidebar";
 
 //create your first component
 const Layout = () => {
@@ -23,24 +23,30 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					{/* <Navbar />
-					<SideBar /> */}
-
-					<Switch>
-						<Route exact path="/">
-							<Login />
-						</Route>
-
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
+					<div className="container-fluid  h-100">
+						<Navbar />
+						<div className="row h-100">
+							<div className="col-2">
+								<SideBar />
+							</div>
+							<div className="col-10">
+								<Switch>
+									<Route exact path="/">
+										<Home />
+									</Route>
+									<Route exact path="/demo">
+										<Demo />
+									</Route>
+									<Route exact path="/single/:theid">
+										<Single />
+									</Route>
+									<Route>
+										<h1>Not found!</h1>
+									</Route>
+								</Switch>
+							</div>
+						</div>
+					</div>
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
