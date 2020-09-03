@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 15vw;
+    /* width: 15vw; */
     margin-right: 80px;
 
 }
@@ -26,4 +26,18 @@
 }
 .navbar__link{
     color: white;
+}
+
+
+/* @media (max-width: 1300px) {
+.navbar__left {
+    width: 25%;
+}
+}
+ */
+
+@media (max-width: 600px) {
+.hide-on-mobile{
+    display: none;
+}
 }

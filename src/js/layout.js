@@ -8,7 +8,6 @@ import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import { SideBar } from "./component/sidebar";
 
 //create your first component
 const Layout = () => {
