@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./views/home";
+import { Home } from "./views/Home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 
@@ -10,8 +10,6 @@ import injectContext from "./store/appContext";
 
 /* import { Navbar } from "./component/navbar";
 import { SideBar } from "./component/sidebar"; */
-
-import { Login } from "./views/login";
 
 //create your first component
 const Layout = () => {
@@ -23,12 +21,9 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					{/* <Navbar />
-					<SideBar /> */}
-
 					<Switch>
 						<Route exact path="/">
-							<Login />
+							<Home />
 						</Route>
 
 						<Route exact path="/demo">

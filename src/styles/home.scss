@@ -1,0 +1,28 @@
+.card{
+    color: #fdfeff;
+    background: #047cfc;
+}
+.card__right{
+    
+    color: #fdfeff;
+    flex:0.9;
+    margin-top: 15px;
+    
+}
+.cardTeacher{
+    border: 1px solid gray;
+    border-radius: 21px 21px 21px 21px;
+}
+.card-bodyTeacher{
+    margin-left: 10px;
+}
+.imagen{
+    height: 120px;
+    width: 120px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
+    margin-left: 80px;
+    margin-top: 15px;
+}
