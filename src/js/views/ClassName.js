@@ -3,107 +3,345 @@ import React from "react";
 export const ClassName = () => {
 	return (
 		<div>
-			<table>
+			<table border="1">
 				<thead>
 					<tr>
 						<th />
-
-						<th colSpan="2">Anthony</th>
-
-						<th colSpan="2">Lione</th>
+						<th colSpan="4">L1</th>
+						<th colSpan="4">L2</th>
+						<th colSpan="4">L3</th>
+						<th colSpan="4">L4</th>
+						<th colSpan="4">L5</th>
+						<th colSpan="4">L6</th>
 					</tr>
 
 					<tr>
-						<th scope="col">Fecha</th>
+						<th scope="row" abbr="Capacidad">
+							Capacidad de almacenamiento
+						</th>
 
-						<th>L1</th>
+						<td>p1</td>
+						<td>p2</td>
+						<td>p3</td>
+						<td>p4</td>
 
-						<th>L2</th>
+						<td>p1</td>
+						<td>p2</td>
+						<td>p3</td>
+						<td>p4</td>
 
-						<th>L3</th>
+						<td>p1</td>
+						<td>p2</td>
+						<td>p3</td>
+						<td>p4</td>
 
-						<th>L4</th>
-						<th>L1</th>
+						<td>p1</td>
+						<td>p2</td>
+						<td>p3</td>
+						<td>p4</td>
 
-						<th>L2</th>
+						<td>p1</td>
+						<td>p2</td>
+						<td>p3</td>
+						<td>p4</td>
 
-						<th>L3</th>
+						<td>p1</td>
+						<td>p2</td>
+						<td>p3</td>
+						<td>p4</td>
+					</tr>
 
-						<th>L4</th>
+					<tr>
+						<th>student</th>
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+					<tr>
+						<th>student</th>
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+
+					<tr>
+						<th>student</th>
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+
+					<tr>
+						<th>student</th>
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+					<tr>
+						<th>student</th>
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+					<tr>
+						<th>student</th>
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+					<tr>
+						<th>student</th>
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+					<tr>
+						<th>student</th>
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+					</tr>
+					<tr>
+						<th>student</th>
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
+
+						<td />
+						<td />
+						<td />
+						<td />
 					</tr>
 				</thead>
-
-				<tbody>
-					<tr>
-						<th>15/07</th>
-
-						<td>$200,00</td>
-
-						<td>$50,00</td>
-
-						<td>$0</td>
-
-						<td>$0</td>
-					</tr>
-
-					<tr>
-						<th>28/07</th>
-
-						<td>$0,00</td>
-
-						<td>$100,00</td>
-
-						<td>$100,00</td>
-
-						<td>$0,00</td>
-					</tr>
-
-					<tr>
-						<th>09/08</th>
-
-						<td>$0,00</td>
-
-						<td>$50,00</td>
-
-						<td>$0,00</td>
-
-						<td>$80,00</td>
-					</tr>
-
-					<tr>
-						<th>22/08</th>
-
-						<td>$40,00</td>
-
-						<td>$0,00</td>
-
-						<td>$0,00</td>
-
-						<td>$110,00</td>
-					</tr>
-
-					<tr>
-						<th>25/08</th>
-
-						<td>$0,00</td>
-
-						<td>$20,00</td>
-
-						<td>$0,00</td>
-
-						<td>$0,00</td>
-					</tr>
-				</tbody>
-
-				<tfoot>
-					<tr>
-						<th>Balance</th>
-
-						<td colSpan="2">$20,00</td>
-
-						<td colSpan="2">$10,00</td>
-					</tr>
-				</tfoot>
 			</table>
 		</div>
 	);
