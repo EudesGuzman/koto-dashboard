@@ -5,7 +5,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 export const Login = () => (
 	<div>
-		<div className="container  align-items-center">
+		<div className="container reset-login align-items-center">
 			<div className="row justify-content-center">
 				<div className="col-4">
 					<p>
@@ -39,8 +39,8 @@ export const Login = () => (
 						</button>
 					</form>
 
-					<p className="text-secondary d-flex justify-content-end align-items-end align-bottom">
-						Dont have an account?{" "}
+					<p className="text-secondary d-flex justify-content-end align-items-end">
+						Dont have an account?
 						<a href="#" className="text-secondary">
 							Sign in
 						</a>
