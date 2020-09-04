@@ -24,15 +24,14 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<div className="container-fluid  h-100">
-						<Navbar />
 						<div className="row h-100">
-							<div className="col-2">
-								<SideBar />
-							</div>
-							<div className="col-10">
+							<div className="col-12">
 								<Switch>
 									<Route exact path="/">
 										<Home />
+									</Route>
+									<Route exact path="/login">
+										<Login />
 									</Route>
 									<Route exact path="/demo">
 										<Demo />

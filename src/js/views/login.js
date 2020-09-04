@@ -1,13 +1,17 @@
 import React from "react";
 import "../../styles/login.scss";
 import chica from "../../img/login-img.png";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 export const Login = () => (
 	<div>
-		<div className="container">
+		<div className="container  align-items-center">
 			<div className="row justify-content-center">
 				<div className="col-4">
-					<p>Go back</p>
+					<p>
+						<ArrowBackIcon />
+						Go back
+					</p>
 					<p>
 						Log in to Kotokan for schools <span className="badge badge-secondary">Beta</span>
 					</p>
@@ -18,7 +22,7 @@ export const Login = () => (
 								className="form-control"
 								id="exampleInputEmail1"
 								aria-describedby="emailHelp"
-								placeholder="Enter email"
+								placeholder="Email Address"
 							/>
 						</div>
 						<div className="form-group">
@@ -35,7 +39,12 @@ export const Login = () => (
 						</button>
 					</form>
 
-					<p>Dont have an account? Sign in</p>
+					<p className="text-secondary d-flex justify-content-end align-items-end align-bottom">
+						Dont have an account?{" "}
+						<a href="#" className="text-secondary">
+							Sign in
+						</a>
+					</p>
 				</div>
 				<div className="col-4">
 					<img src={chica} className="img-fluid" />
