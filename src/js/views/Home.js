@@ -5,6 +5,8 @@ import DeviceHubRoundedIcon from "@material-ui/icons/DeviceHubRounded";
 
 import "../../styles/home.scss";
 import chico from "../../img/chico.jpg";
+import SchoolIcon from "@material-ui/icons/School";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 export const Home = () => {
 	return (
@@ -49,9 +51,49 @@ export const Home = () => {
 				</div>
 
 				<div className="row">
-					<div className="col-sm">One of three columns</div>
-					<div className="col-sm">One of three columns</div>
-					<div className="col-sm">One of three columns</div>
+					<div className="col-sm">
+						<div className="cardTeacher d-flex flex-row">
+							<div className="card-bodyTeacher ">
+								<h5 className="card-title">ClassName 1</h5>
+								<p className="card-text"> Stutents in this class</p>
+								<p>18</p>
+							</div>
+
+							<div className="card__rightTeacher ">
+								<SchoolIcon />
+								<div>
+									<a href="/">
+										view stutend progress <ArrowForwardIosIcon />
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="col-sm">
+						<div className="cardTeacher d-flex flex-row">
+							<div className="card-bodyTeacher ">
+								<h5 className="card-title">ClassName 1</h5>
+								<p className="card-text"> Stutents in this class</p>
+								<p>18</p>
+							</div>
+
+							<div className="card__rightTeacher ">
+								<SchoolIcon />
+								<div>
+									<a href="/">
+										view stutend progress <ArrowForwardIosIcon />
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="col-sm">
+						<button type="button" className="btn btn-primary" disabled>
+							+Add Teacher
+						</button>
+					</div>
 				</div>
 			</div>
 		</>
