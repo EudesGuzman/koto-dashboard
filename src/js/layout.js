@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./views/Home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 
 import injectContext from "./store/appContext";
+import { ClassName } from "./views/ClassName";
 
 /* import { Navbar } from "./component/navbar";
 import { SideBar } from "./component/sidebar"; */
@@ -23,7 +23,7 @@ const Layout = () => {
 				<ScrollToTop>
 					<Switch>
 						<Route exact path="/">
-							<Home />
+							<ClassName />
 						</Route>
 
 						<Route exact path="/demo">
