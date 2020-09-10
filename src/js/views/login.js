@@ -3,11 +3,11 @@ import "../../styles/login.scss";
 import chica from "../../img/login-img.png";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-export const Login = () => (
-	<div>
-		<div className="container reset-login align-items-center">
-			<div className="row justify-content-center">
-				<div className="col-4">
+export const Login = () => {
+	return (
+		<div className="login">
+			<div className="login__container">
+				<div className="login__left">
 					<p>
 						<ArrowBackIcon />
 						Go back
@@ -15,6 +15,7 @@ export const Login = () => (
 					<p>
 						Log in to Kotokan for schools <span className="badge badge-secondary">Beta</span>
 					</p>
+
 					<form>
 						<div className="form-group">
 							<input
@@ -39,17 +40,18 @@ export const Login = () => (
 						</button>
 					</form>
 
-					<p className="text-secondary d-flex justify-content-end align-items-end">
+					<p>
 						Dont have an account?
 						<a href="#" className="text-secondary">
 							Sign in
 						</a>
 					</p>
 				</div>
-				<div className="col-4">
-					<img src={chica} className="img-fluid" />
+
+				<div className="login__right">
+					<img src={chica} alt="" />
 				</div>
 			</div>
 		</div>
-	</div>
-);
+	);
+};
