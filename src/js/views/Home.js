@@ -16,8 +16,8 @@ export const Home = () => {
 					<div className="col-sm">
 						<div className="card d-flex flex-row">
 							<div className="card-body ">
-								<h5 className="card-title">School Details</h5>
-								<p className="card-text">School Name</p>
+								<p className="card-title text-uppercase">School Details</p>
+								<h5 className="card-text">School Name</h5>
 								<p>
 									School code <DeviceHubRoundedIcon />
 								</p>
@@ -32,10 +32,10 @@ export const Home = () => {
 					<div className="col-sm">
 						<div className="cardTeacher d-flex flex-row">
 							<div className="card-bodyTeacher ">
-								<h5 className="card-title">Teacher Details</h5>
-								<p className="card-text">Teacher Name</p>
-								<p>Role</p>
-								<h5>Teacher</h5>
+								<p className="card-title text-uppercase">Teacher Details</p>
+								<h5 className="card-text">Teacher Name</h5>
+								<p className="text-secondary">Role</p>
+								<h6 className="text-secondary">Teacher</h6>
 							</div>
 
 							<div className="card__rightTeacher ">
@@ -43,8 +43,8 @@ export const Home = () => {
 							</div>
 						</div>
 					</div>
-					<div className="col-sm">
-						<button type="button" className="btn btn-primary" disabled>
+					<div className="col-sm d-flex align-items-center">
+						<button type="button" className="btn btn-primary text-uppercase" disabled>
 							+Add Teacher
 						</button>
 					</div>
@@ -55,26 +55,25 @@ export const Home = () => {
 						<div className="cardTeacher d-flex flex-row">
 							<div className="card-bodyTeacher ">
 								<h5 className="card-title">ClassName 1</h5>
-								<p className="card-text"> Stutents in this class</p>
+								<p className="card-text "> Students in this class</p>
 								<p>18</p>
 							</div>
 
-							<div className="card__rightTeacher ">
+							<div className="card__rightTeacher text-center ">
 								<SchoolIcon />
-								<div>
-									<a href="/">
-										view stutend progress <ArrowForwardIosIcon />
+								<div className="text-right">
+									<a href="/" className="">
+										view students progress <ArrowForwardIosIcon />
 									</a>
 								</div>
 							</div>
 						</div>
 					</div>
-
 					<div className="col-sm">
 						<div className="cardTeacher d-flex flex-row">
 							<div className="card-bodyTeacher ">
-								<h5 className="card-title">ClassName 1</h5>
-								<p className="card-text"> Stutents in this class</p>
+								<h5 className="card-title">ClassName 2</h5>
+								<p className="card-text "> Students in this class</p>
 								<p>18</p>
 							</div>
 
@@ -82,16 +81,16 @@ export const Home = () => {
 								<SchoolIcon />
 								<div>
 									<a href="/">
-										view stutend progress <ArrowForwardIosIcon />
+										view students progress <ArrowForwardIosIcon />
 									</a>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div className="col-sm">
-						<button type="button" className="btn btn-primary" disabled>
-							+Add Teacher
+					<div className="col-sm d-flex align-items-center">
+						<button type="button" className="btn btn-primary text-uppercase" disabled>
+							+ Add a class
 						</button>
 					</div>
 				</div>
