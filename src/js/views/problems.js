@@ -9,7 +9,7 @@ export const Problems = () => {
 				<div className="col-md-4 separacion">
 					<div className="row">
 						<div className="col-md-10">
-							<p>Some students struggle with these problems</p>
+							<p className="text-uppercase">Some students struggle with these problems</p>
 							<h5>STRUGGLING</h5>
 						</div>
 						<div className="col-md-2 d-flex align-items-center">
@@ -18,18 +18,22 @@ export const Problems = () => {
 					</div>
 					<div className="card">
 						<div className="card-header">
-							<p className="card-text">Activities</p>
-							<h5 className="card-title">Problem Name</h5>
-							<p>
-								<strong>Descripcion del problema</strong>
+							<p className="card-text text-uppercase text-secondary">Activities</p>
+							<h5 className="card-title text-secondary problem-title">Problem Name / id problem</h5>
+							<p className="d-flex justify-content-center">
+								<strong>
+									Descripcion del problema, Descripcion del problema, Descripcion del problema
+								</strong>
 							</p>
 						</div>
 
 						<div className="card-body">
 							<p>Students</p>
-							<img src={chica} alt="..." className="rounded-circle estudiantes-circulo" />
-							<img src={chica} alt="..." className="rounded-circle estudiantes-circulo" />
-							<img src={chica} alt="..." className="rounded-circle estudiantes-circulo" />
+							<div className="avatar-estudiantes d-flex justify-content-end">
+								<img src={chica} alt="..." className="rounded-circle estudiantes-circulo" />
+								<img src={chica} alt="..." className="rounded-circle estudiantes-circulo" />
+								<img src={chica} alt="..." className="rounded-circle estudiantes-circulo" />
+							</div>
 						</div>
 					</div>
 				</div>
