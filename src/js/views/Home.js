@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import BusinessIcon from "@material-ui/icons/Business";
 import DeviceHubRoundedIcon from "@material-ui/icons/DeviceHubRounded";
@@ -7,8 +7,11 @@ import "../../styles/home.scss";
 import chico from "../../img/chico.jpg";
 import SchoolIcon from "@material-ui/icons/School";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { Context } from "../store/appContext";
 
 export const Home = () => {
+	const { actions, store } = useContext(Context);
+
 	return (
 		<>
 			<div className="container">
@@ -33,7 +36,8 @@ export const Home = () => {
 						<div className="cardTeacher d-flex flex-row">
 							<div className="card-bodyTeacher ">
 								<p className="card-title text-uppercase">Teacher Details</p>
-								<h5 className="card-text">Teacher Name</h5>
+								<h5 className="card-text">{store.user.length > 0 ? store.user[0].name : ""}</h5>
+								{/* //[0].name puede funcionar*/}
 								<p className="text-secondary">Role</p>
 								<h6 className="text-secondary">Teacher</h6>
 							</div>
