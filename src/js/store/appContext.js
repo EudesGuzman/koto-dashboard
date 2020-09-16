@@ -19,6 +19,8 @@ const injectContext = PassedComponent => {
 
 		useEffect(() => {
 			state.actions.loadUsers();
+
+			state.actions.loadClasses();
 		}, []);
 
 		return (

@@ -12,6 +12,8 @@ import { Context } from "../store/appContext";
 export const Home = () => {
 	const { actions, store } = useContext(Context);
 
+	console.log(store.enrollments);
+
 	return (
 		<>
 			<div className="container">
@@ -55,42 +57,26 @@ export const Home = () => {
 				</div>
 
 				<div className="row">
-					<div className="col-sm">
-						<div className="cardTeacher d-flex flex-row">
-							<div className="card-bodyTeacher ">
-								<h5 className="card-title">ClassName 1</h5>
-								<p className="card-text "> Students in this class</p>
-								<p>18</p>
-							</div>
+					{store.courses.map((course, index) => (
+						<div className="col-sm" key={index}>
+							<div className="cardTeacher d-flex flex-row">
+								<div className="card-bodyTeacher ">
+									<h5 className="card-title">{course.name}</h5>
+									<p className="card-text "> Students in this class</p>
+									<p>18</p>
+								</div>
 
-							<div className="card__rightTeacher text-center ">
-								<SchoolIcon />
-								<div className="text-right">
-									<a href="/" className="">
-										view students progress <ArrowForwardIosIcon />
-									</a>
+								<div className="card__rightTeacher text-center ">
+									<SchoolIcon />
+									<div className="text-right">
+										<a href="/" className="">
+											view students progress <ArrowForwardIosIcon />
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div className="col-sm">
-						<div className="cardTeacher d-flex flex-row">
-							<div className="card-bodyTeacher ">
-								<h5 className="card-title">ClassName 2</h5>
-								<p className="card-text "> Students in this class</p>
-								<p>18</p>
-							</div>
-
-							<div className="card__rightTeacher ">
-								<SchoolIcon />
-								<div>
-									<a href="/">
-										view students progress <ArrowForwardIosIcon />
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
+					))}
 
 					<div className="col-sm d-flex align-items-center">
 						<button type="button" className="btn btn-primary text-uppercase" disabled>
