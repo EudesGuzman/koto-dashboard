@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../styles/login.scss";
 import chica from "../../img/login-img.png";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { Context } from "../store/appContext";
 
 export const Login = () => {
 	const [email, setEmail] = React.useState("");
 	const [pass, setPass] = React.useState("");
+
+	const { actions } = useContext(Context);
 
 	return (
 		<div className="login">
@@ -42,7 +45,12 @@ export const Login = () => {
 							/>
 						</div>
 
-						<button type="submit" className="btn btn-primary btn-lg btn-block">
+						<button
+							className="btn btn-primary btn-lg btn-block"
+							onClick={e => {
+								e.preventDefault();
+								actions.login(email, pass);
+							}}>
 							Submit
 						</button>
 					</form>
