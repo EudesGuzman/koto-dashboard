@@ -4,6 +4,9 @@ import chica from "../../img/login-img.png";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 export const Login = () => {
+	const [email, setEmail] = React.useState("");
+	const [pass, setPass] = React.useState("");
+
 	return (
 		<div className="login">
 			<div className="login__container">
@@ -24,6 +27,8 @@ export const Login = () => {
 								id="exampleInputEmail1"
 								aria-describedby="emailHelp"
 								placeholder="Email Address"
+								onChange={e => setEmail(e.target.value)}
+								value={email}
 							/>
 						</div>
 						<div className="form-group">
@@ -32,6 +37,8 @@ export const Login = () => {
 								className="form-control"
 								id="exampleInputPassword1"
 								placeholder="Password"
+								onChange={e => setPass(e.target.value)}
+								value={pass}
 							/>
 						</div>
 
