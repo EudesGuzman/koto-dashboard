@@ -8,9 +8,9 @@ import { Single } from "./views/single";
 import { Login } from "./views/login";
 import { Problems } from "./views/problems";
 import { Home } from "./views/Home.js";
+import { ClassName } from "./views/ClassName";
 
 import injectContext from "./store/appContext";
-import { ClassName } from "./views/ClassName";
 
 import { SideBar } from "./component/sidebar";
 import { Navbar } from "./component/navbar";
@@ -28,21 +28,50 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Navbar />
-							<SideBar />
-							<Home />
+							<div className="container-fluid h-100">
+								<div className="row h-100">
+									<div className="col-2 h-100">
+										<SideBar />
+									</div>
+									<div className="col-10  p-2">
+										<Home />
+									</div>
+								</div>
+							</div>
 						</Route>
 						<Route exact path="/login">
 							<Login />
 						</Route>
 						<Route exact path="/classname">
 							<Navbar />
-							<SideBar />
-							<Demo />
+							<div className="container-fluid h-100">
+								<div className="row h-100">
+									<div className="col-2 h-100">
+										<SideBar />
+									</div>
+									<div className="col-10  p-2">
+										<ClassName />
+									</div>
+								</div>
+							</div>
 						</Route>
 						<Route exact path="/single/:theid">
 							<Navbar />
 							<SideBar />
 							<Single />
+						</Route>
+						<Route exact path="/problems">
+							<Navbar />
+							<div className="container-fluid h-100">
+								<div className="row h-100">
+									<div className="col-2 h-100">
+										<SideBar />
+									</div>
+									<div className="col-10 p-2">
+										<Problems />
+									</div>
+								</div>
+							</div>
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

@@ -10,8 +10,8 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 export const SideBar = () => {
 	return (
-		<div className="h-100  sidenav">
-			<ul className="nav flex-column  ">
+		<div className="sidenav h-100 p-2">
+			<ul className="nav flex-column h-100">
 				<li className="nav-item">
 					<a className="nav-link active" href="#">
 						<DashboardIcon /> Home

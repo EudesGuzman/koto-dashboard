@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.scss";
-/* import ExitToAppIcon from "@material-ui/icons/ExitToApp";*/
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import logo from "../../img/icon-kotokan.png";
 
 export const Navbar = () => {
@@ -16,10 +16,14 @@ export const Navbar = () => {
 
 				<span className="badge badge-secondary ml-2">Beta</span>
 
-				<Link className="navbar__link ml-2 text-dark">Home</Link>
+				<Link className="navbar__link ml-2 text-dark">
+					<b>Home</b>
+				</Link>
 			</div>
 
-			<div>Log out {/* <ExitToAppIcon /> */}</div>
+			<div>
+				Log out <ExitToAppIcon />{" "}
+			</div>
 		</div>
 	);
 };

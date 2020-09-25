@@ -17,9 +17,9 @@ export const Problems = () => {
 							<img src={chica} alt="..." className="rounded-circle estudiantes-circulo" />
 						</div>
 					</div>
-					{store.problems.map((elm, index) => {
+					{/* {store.problems.map((elm, index) => {
 						<problemCard idx={index} element={elm} key={index} />;
-					})}
+					})} */}
 				</div>
 				<div className="col-md-4 separacion">
 					<p>Some students thrive with these problems</p>
