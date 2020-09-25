@@ -6,6 +6,7 @@ import "../styles/layout.scss";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { Login } from "./views/login";
+import { Problems } from "./views/problems";
 
 import injectContext from "./store/appContext";
 import { ClassName } from "./views/ClassName";

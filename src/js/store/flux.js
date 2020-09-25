@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: [],
 			courses: [],
-			enrollments: []
+			enrollments: [],
 			student: []
 		},
 
