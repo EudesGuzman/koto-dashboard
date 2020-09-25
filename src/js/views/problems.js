@@ -7,14 +7,14 @@ export const Problems = () => {
 	return (
 		<div className="container">
 			<div className="row">
-				<div className="col-md-4 separacion">
+				<div className="col-md-4">
 					<div className="row">
 						<div className="col-md-10">
 							<p className="text-uppercase">Some students struggle with these problems</p>
 							<h5>STRUGGLING</h5>
 						</div>
 						<div className="col-md-2 d-flex align-items-center">
-							<img src={chica} alt="..." className="rounded-circle estudiantes-circulo" />
+							<img src={chica} alt="..." className="rounded-circle avatar-estudiantes" />
 						</div>
 					</div>
 					{/* {store.problems.map((elm, index) => {

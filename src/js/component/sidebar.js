@@ -13,22 +13,22 @@ export const SideBar = () => {
 		<div className="sidenav h-100 p-2">
 			<ul className="nav flex-column h-100">
 				<li className="nav-item">
-					<a className="nav-link active" href="#">
+					<a className="nav-link active" href="/">
 						<DashboardIcon /> Home
 					</a>
 				</li>
 				<li className="nav-item">
-					<a className="nav-link" href="#">
+					<a className="nav-link" href="/classname">
 						<SchoolIcon /> ClassName 1
 					</a>
 				</li>
 				<li className="nav-item">
-					<a className="nav-link" href="#">
+					<a className="nav-link" href="/classname">
 						<SchoolIcon /> ClassName 2
 					</a>
 				</li>
 				<li className="nav-item">
-					<a className="nav-link" href="#">
+					<a className="nav-link" href="/problems">
 						<LocalParkingIcon /> Problems
 					</a>
 				</li>

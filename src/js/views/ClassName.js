@@ -16,8 +16,8 @@ export const ClassName = () => {
 					</tr>
 
 					<tr>
-						<th scope="row" abbr="Capacidad">
-							Capacidad de almacenamiento
+						<th scope="row" abbr="Capacidad" className="text-uppercase">
+							students
 						</th>
 
 						<td>p1</td>

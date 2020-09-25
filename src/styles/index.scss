@@ -1,66 +1,12 @@
-/* 
-    General Styles
-*/
-
-
-.btn-primary:hover {
-    color: #fff;
-    background-color: #F5A623;
-    border-color: #F5A623;
+// Layout - Reset
+body{
+   background-color:  #F9FAFB
 }
 
-a:hover {
-    text-decoration: none;
-}
-
-// HOME
-.card{
-    color: #fdfeff;
-    background: #047cfc;
-    border-radius: 3px;
-    margin-bottom: 5px;
-    min-height: 150px;
-}
-
-.card__right{
-    color: #fdfeff;
-    flex:0.9;
-    margin-top: 15px;
-}
-
-.cardTeacher{
-    border: 1px solid gray;
-    border-radius: 3px;
-    min-height: 150px;
-    padding: 2%;
-}
-
-.card-bodyTeacher{
-    margin-left: 10px;
-}
-
-.imagen{
-    height: 80px;
-    width: 80px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    border-radius: 50%;
-    background-size: 100% auto;
-    margin-left: 80px;
-    margin-top: 15px;
-}
-
-
-.text-uppercase {
-    font-size: 11px;
-}
-
-// Layout
 .container-fluid {
     padding-right: 0px; 
     padding-left: 0px; 
 }
-
 
 .btn-primary {
     color: #000;
@@ -68,121 +14,20 @@ a:hover {
     border: #F5A623;
 }
 
-body{
-   background-color:  #F9FAFB
+.btn-primary:hover {
+    color: #fff;
 }
 
-// Login
-/*.reset-login {
--webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.53);
--moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.53);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.53);
- background-color: white;
-}*/
-.login{
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center; 
-    
-    
-}
-.login__container {
-    width: 800px;
-    height: fit-content;
-    display: flex;
-    
-    
-    border-radius: 5px;
-    border: 1px solid lightgray;
-   
-}
-
-.login__left{
-    
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-right: 50px;
-    
-
-}
-.login__right>img{
-    width: 450px;
-    padding:0px;
-
-}
-.login__left>p{
-    width: 250px;
-}
-
-
-// navbar
-.navbar{
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    width: 100%;
-    
-    background: #F5A623;
-    color:white;
-
-}
-.navbar__left{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* width: 15vw; */
-    margin-right: 80px;
-
-}
-.navbar__input{
-   
-    margin-top: 15px;
-}
-.navbar__link{
-    color: white;
-}
-
-@media (max-width: 600px) {
-.hide-on-mobile{
-    display: none;
-}
-}
-
-
-// problems
-.estudiantes-circulo {
-    width: 30px;
-    height: 30px;
-    margin: 2px;
-}
-
-.container {
-    background-color: #e1e1e152;
-}
-
-/* .col-md-4.separacion {
-    background-color: white;
-    border-radius: 3px;
-    padding: 20px;
-} */
-
-.problem-title{
-
-}
-
-.separacion{
-    margin: 5px;
+a:hover {
+    text-decoration: none;
 }
 
 .text-uppercase {
     font-size: 11px;
 }
-
+.text-mini{
+        font-size: 11px;
+}
 
 // sidebar
 .active{
@@ -206,16 +51,46 @@ display: flex; justify-content: space-between; align-items: center;
 }
 
 .sidenav {
-    // width: 15%;
-    min-width: 150px;
     -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.53);
     -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.53);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.53);
-    // padding-top: 1%; 
-    // padding-left: 1%; 
 }
 
+// problems
+.avatar-estudiantes {
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+}
 
-// .dropdown-divider {
-//     width: 90%;
-// }
+// Login
+
+.login{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;  
+}
+
+.login__container {
+    width: 800px;
+    height: fit-content;
+    display: flex;
+     border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+.login__left{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.login__right>img{
+    width: 450px;
+    padding:0px;
+}
+
+.login__left>p{
+    width: 250px;
+}

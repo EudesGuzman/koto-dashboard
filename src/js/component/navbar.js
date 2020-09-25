@@ -16,7 +16,7 @@ export const Navbar = () => {
 
 				<span className="badge badge-secondary ml-2">Beta</span>
 
-				<Link className="navbar__link ml-2 text-dark">
+				<Link className="navbar__link ml-2 ">
 					<b>Home</b>
 				</Link>
 			</div>

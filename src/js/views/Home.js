@@ -5,6 +5,7 @@ import DeviceHubRoundedIcon from "@material-ui/icons/DeviceHubRounded";
 
 import "../../styles/home.scss";
 import chico from "../../img/chico.jpg";
+import teacher from "../../img/teacher.jpg";
 import SchoolIcon from "@material-ui/icons/School";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Context } from "../store/appContext";
@@ -20,35 +21,42 @@ export const Home = () => {
 				<div className="row">
 					<div className="col-sm">
 						<div className="card d-flex flex-row">
-							<div className="card-body ">
-								<p className="card-title text-uppercase">School Details</p>
-								<h5 className="card-text">School Name</h5>
-								<p>
+							<div className="card-body">
+								<p className="card-title text-uppercase font-weight-bold">School Details</p>
+								<h5 className="card-text font-weight-bold">SchoolName</h5>
+								<p className="mt-4">
 									School code <DeviceHubRoundedIcon />
 								</p>
 							</div>
 
 							<div className="card__right ">
-								<BusinessIcon className="card__rightButton" style={{ fontSize: 40 }} />
+								<BusinessIcon className="card__rightButton" style={{ fontSize: 60 }} />
 							</div>
 						</div>
 					</div>
 
 					<div className="col-sm">
 						<div className="cardTeacher d-flex flex-row">
-							<div className="card-bodyTeacher ">
-								<p className="card-title text-uppercase">Teacher Details</p>
-								<h5 className="card-text">{store.user.length > 0 ? store.user[0].name : ""}</h5>
+							<div className="card-body">
+								<p className="card-title text-uppercase font-weight-bold text-secondary">
+									Teacher Details
+								</p>
+								<h5 className="card-text font-weight-bold">
+									{store.user.length > 0 ? store.user[0].name : ""}
+									Teacher name
+								</h5>
 								{/* //[0].name puede funcionar*/}
-								<p className="text-secondary">Role</p>
+								<p className="text-secondary mt-4 mb-0 text-mini">Role</p>
 								<h6 className="text-secondary">Teacher</h6>
 							</div>
 
-							<div className="card__rightTeacher ">
-								<img src={chico} alt="" className="imagen" />
+							<div className="card__right ">
+								<img src={teacher} alt="" className="avatar-teacher" />
 							</div>
 						</div>
 					</div>
+
+					{/* ********************************************* */}
 					<div className="col-sm d-flex align-items-center">
 						<button type="button" className="btn btn-primary text-uppercase" disabled>
 							+Add Teacher
