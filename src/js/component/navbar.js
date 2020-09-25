@@ -1,38 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.scss";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+/* import ExitToAppIcon from "@material-ui/icons/ExitToApp";*/
 import logo from "../../img/icon-kotokan.png";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-expand-lg color-principal">
-			<a className="navbar-brand" href="#">
-				<img src={logo} />
-			</a>
-			<p>
-				Kotokan for school <span className="badge badge-secondary">Beta</span>
-			</p>
+		<div className="navbar">
+			<div className="navbar__left">
+				<Link>
+					<img src={logo} />
+				</Link>
 
-			<div className="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul className="navbar-nav mr-auto">
-					<li className="nav-item active">
-						<a className="nav-link" href="#">
-							Home <span className="sr-only">(current)</span>
-						</a>
-					</li>
-				</ul>
-				<form className="form-inline my-2 my-lg-0">
-					<ul className="navbar-nav mr-auto">
-						<li className="nav-item active">
-							<a className="nav-link" href="#">
-								Log out <ExitToAppIcon />
-							</a>
-						</li>
-					</ul>
-				</form>
+				<p className="navbar__input hide-on-mobile ml-2 ">Kotokan for school</p>
+
+				<span className="badge badge-secondary ml-2">Beta</span>
+
+				<Link className="navbar__link ml-2 text-dark">Home</Link>
 			</div>
-		</nav>
+
+			<div>Log out {/* <ExitToAppIcon /> */}</div>
+		</div>
 	);
 };
 

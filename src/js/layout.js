@@ -23,29 +23,26 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<div className="container-fluid  h-100">
-						<div className="row h-100">
-							<div className="col-12">
-								<Switch>
-									<Route exact path="/">
-										<Home />
-									</Route>
-									<Route exact path="/login">
-										<Login />
-									</Route>
-									<Route exact path="/demo">
-										<Demo />
-									</Route>
-									<Route exact path="/single/:theid">
-										<Single />
-									</Route>
-									<Route>
-										<h1>Not found!</h1>
-									</Route>
-								</Switch>
-							</div>
-						</div>
-					</div>
+					<Switch>
+						<Route exact path="/">
+							<Navbar />
+							<Home />
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/demo">
+							<Navbar />
+							<Demo />
+						</Route>
+						<Route exact path="/single/:theid">
+							<Navbar />
+							<Single />
+						</Route>
+						<Route>
+							<h1>Not found!</h1>
+						</Route>
+					</Switch>
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
