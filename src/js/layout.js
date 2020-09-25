@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import "../styles/layout.scss";
 
-import { Home } from "./views/home";
+import { Home } from "./views/Home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { Login } from "./views/login";
