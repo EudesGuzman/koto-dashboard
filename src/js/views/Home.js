@@ -13,8 +13,6 @@ import { Context } from "../store/appContext";
 export const Home = () => {
 	const { actions, store } = useContext(Context);
 
-	console.log(store.enrollments);
-
 	return (
 		<>
 			<div className="container-fluid">

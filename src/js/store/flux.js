@@ -8,8 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: "",
 			user: [],
 			courses: [],
-			enrollments: [],
-			student: []
+			students: []
 		},
 
 		actions: {
@@ -30,7 +29,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadUsers: async () => {
-				let response = await fetch("https://3000-ce9f707b-14a0-4525-bc1a-75c19b455643.ws-eu01.gitpod.io/user");
+				let response = await fetch(
+					"https://3000-a32b9492-7b21-4054-a2a1-a87fb7bf84f2.ws-eu01.gitpod.io/teachers"
+				);
 				response = await response.json();
 
 				setStore({
@@ -48,24 +49,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					courses: response
 				});
 			},
-			loadEnrollments: async () => {
-				let response = await fetch(
-					"https://3000-ce9f707b-14a0-4525-bc1a-75c19b455643.ws-eu01.gitpod.io/enrollments"
-				);
-				response = await response.json();
-
-				setStore({
-					enrollments: response
-				});
-			},
 			loadStudent: async () => {
 				let response = await fetch(
-					"https://3000-edef1a0e-45d1-4207-a215-9bb4e83c5e0b.ws-eu01.gitpod.io/students"
+					"https://3000-a32b9492-7b21-4054-a2a1-a87fb7bf84f2.ws-eu01.gitpod.io/students"
 				);
 				response = await response.json();
 
 				setStore({
-					student: response
+					students: response
 				});
 			}
 		}
