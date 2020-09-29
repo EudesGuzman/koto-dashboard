@@ -1,9 +1,26 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Context } from "../store/appContext";
+import { Problems } from "../component/Problems";
 
 export const ClassName = () => {
 	const { actions, store } = useContext(Context);
+
+	const [level, setLevel] = useState(null);
+	const [problema, setProblema] = useState([]);
+	const [difficulty, setDifficulty] = useState(null);
+
+	const arrayDeTh = [];
+	let count = 0;
+
+	for (let x = 0; x < 24; x++) {
+		if (count < 4) {
+			count += 1;
+		} else {
+			count = 1;
+		}
+		arrayDeTh.push("P".concat(count));
+	}
 
 	useEffect(
 		() => {
@@ -12,17 +29,22 @@ export const ClassName = () => {
 			console.log("holaaaa--->>>>>>>>>>>", store.students);
 			if (store.students.length > 0) {
 				const student = store.students[0];
-				const stage = student.game_status.stage[1];
+				const stage = student.gameStatus.stage["1"];
 
 				Object.keys(stage.level).map(e => {
 					const level = stage.level[e];
+					//console.log("level----->>", level);
 					Object.keys(level.problem).map(p => {
-						const problem = level.problem[p];
-						console.log("ppp-->>", problem);
-						Object.keys(problem.difficulty).map(d => {
-							const difficulty = problem.difficulty[p];
-							console.log("dddd--->>>", difficulty);
+						console.log("aaaa-->", level.problem[p]);
+						setProblema(problema => {
+							return [...problema, level.problem[p]];
 						});
+
+						//console.log("problem-->>", problem);
+						/* 	Object.keys(problem.difficulty).map(d => {
+							const difficulty = problem.difficulty[p];
+							console.log("difficulty--->>>", difficulty); */
+						/* }); */
 					});
 				});
 			}
@@ -53,41 +75,17 @@ export const ClassName = () => {
 							students
 						</th>
 
-						<td>p1</td>
-						<td>p2</td>
-						<td>p3</td>
-						<td>p4</td>
-
-						<td>p1</td>
-						<td>p2</td>
-						<td>p3</td>
-						<td>p4</td>
-
-						<td>p1</td>
-						<td>p2</td>
-						<td>p3</td>
-						<td>p4</td>
-
-						<td>p1</td>
-						<td>p2</td>
-						<td>p3</td>
-						<td>p4</td>
-
-						<td>p1</td>
-						<td>p2</td>
-						<td>p3</td>
-						<td>p4</td>
-
-						<td>p1</td>
-						<td>p2</td>
-						<td>p3</td>
-						<td>p4</td>
+						{arrayDeTh.map((c, index) => {
+							return <th key={index}>{c}</th>;
+						})}
 					</tr>
 
 					{store.students.map(stu => (
 						<tr key={stu.id}>
 							<th>{stu.name}</th>
-							<td />
+							{arrayDeTh.map((c, index) => {
+								return <Problems key={index} problemas={problema[index]} />;
+							})}
 						</tr>
 					))}
 				</thead>
