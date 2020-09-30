@@ -20,6 +20,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 										problem: {
 											"1": {
 												difficulty: {
+													"2": {
+														points: 0,
+														id: 1,
+														completed: true,
+														playCount: 0,
+														started: false
+													},
 													"1": {
 														completed: true,
 														playCount: 1,
@@ -27,13 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 														points: 55,
 														id: 1
 													},
-													"2": {
-														points: 0,
-														id: 1,
-														completed: false,
-														playCount: 0,
-														started: false
-													},
+
 													"3": {
 														playCount: 0,
 														started: false,
