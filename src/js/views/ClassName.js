@@ -26,7 +26,7 @@ export const ClassName = () => {
 		() => {
 			//const student = store.students[0];
 
-			console.log("holaaaa--->>>>>>>>>>>", store.students);
+			//console.log("holaaaa--->>>>>>>>>>>", store.students);
 			if (store.students.length > 0) {
 				const student = store.students[0];
 				const stage = student.gameStatus.stage["1"];
@@ -35,7 +35,7 @@ export const ClassName = () => {
 					const level = stage.level[e];
 					//console.log("level----->>", level);
 					Object.keys(level.problem).map(p => {
-						console.log("aaaa-->", level.problem[p]);
+						//console.log("aaaa-->", level.problem[p]);
 						setProblema(problema => {
 							return [...problema, level.problem[p]];
 						});
@@ -84,7 +84,7 @@ export const ClassName = () => {
 						<tr key={stu.id}>
 							<th>{stu.name}</th>
 							{arrayDeTh.map((c, index) => {
-								return <Problems key={index} problemas={problema[index]} />;
+								return <Problems key={index} problem={problema[index]} />;
 							})}
 						</tr>
 					))}

@@ -119,6 +119,143 @@ const getState = ({ getStore, getActions, setStore }) => {
 												}
 											},
 											"4": {
+												completed: true,
+												difficulty: {
+													"1": {
+														playCount: 0,
+														started: true,
+														points: 0,
+														id: 4,
+														completed: false
+													},
+													"2": {
+														completed: false,
+														playCount: 0,
+														started: false,
+														points: 0,
+														id: 4
+													},
+													"3": {
+														playCount: 0,
+														started: false,
+														points: 0,
+														id: 4,
+														completed: false
+													},
+													"4": {
+														playCount: 0,
+														started: false,
+														points: 0,
+														id: 4,
+														completed: true
+													}
+												}
+											}
+										}
+									},
+									"2": {
+										problem: {
+											"1": {
+												difficulty: {
+													"2": {
+														points: 0,
+														id: 1,
+														completed: true,
+														playCount: 0,
+														started: false
+													},
+													"1": {
+														completed: true,
+														playCount: 1,
+														started: true,
+														points: 55,
+														id: 1
+													},
+
+													"3": {
+														playCount: 0,
+														started: false,
+														points: 0,
+														id: 1,
+														completed: false
+													},
+													"4": {
+														playCount: 0,
+														started: false,
+														points: 0,
+														id: 1,
+														completed: false
+													}
+												},
+												completed: true
+											},
+											"2": {
+												difficulty: {
+													"1": {
+														points: 75,
+														id: 2,
+														completed: true,
+														playCount: 1,
+														started: true
+													},
+													"2": {
+														points: 0,
+														id: 2,
+														completed: false,
+														playCount: 0,
+														started: false
+													},
+													"3": {
+														completed: false,
+														playCount: 0,
+														started: false,
+														points: 0,
+														id: 2
+													},
+													"4": {
+														playCount: 0,
+														started: false,
+														points: 0,
+														id: 2,
+														completed: false
+													}
+												},
+												completed: true
+											},
+											"3": {
+												completed: true,
+												difficulty: {
+													"1": {
+														playCount: 1,
+														started: true,
+														points: 70,
+														id: 3,
+														completed: true
+													},
+													"2": {
+														playCount: 0,
+														started: false,
+														points: 0,
+														id: 3,
+														completed: false
+													},
+													"3": {
+														points: 0,
+														id: 3,
+														completed: false,
+														playCount: 0,
+														started: false
+													},
+													"4": {
+														points: 0,
+														id: 3,
+														completed: false,
+														playCount: 0,
+														started: false
+													}
+												}
+											},
+											"4": {
 												difficulty: {
 													"1": {
 														playCount: 0,
