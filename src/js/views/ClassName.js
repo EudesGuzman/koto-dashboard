@@ -6,9 +6,13 @@ import { Problems } from "../component/Problems";
 export const ClassName = () => {
 	const { actions, store } = useContext(Context);
 
-	const [level, setLevel] = useState(null);
+	const [levelNumber, setLevelNumber] = useState(null);
+	const [level, setLevel] = useState([]);
 	const [problema, setProblema] = useState([]);
 	const [difficulty, setDifficulty] = useState(null);
+	const [completedTrue, setCompletedTrue] = useState(null);
+
+	const [stages, setStages] = useState([]);
 
 	const arrayDeTh = [];
 	let count = 0;
@@ -30,12 +34,30 @@ export const ClassName = () => {
 			if (store.students.length > 0) {
 				const student = store.students[0];
 				const stage = student.gameStatus.stage["1"];
+				setStages(stages => {
+					return [...stages, stage];
+				});
 
 				Object.keys(stage.level).map(e => {
 					const level = stage.level[e];
-					//console.log("level----->>", level);
+					//console.log("level----->>", e);
+
+					setLevelNumber(levelNumber => {
+						return e;
+					});
+
+					setLevel(level => {
+						return [...level, stage.level[e]];
+					});
+
 					Object.keys(level.problem).map(p => {
-						//console.log("aaaa-->", level.problem[p]);
+						if (level.problem[p].completed) {
+							//console.log("aqui esta la p-->", p);
+							setCompletedTrue(completedTrue => {
+								return p;
+							});
+						}
+
 						setProblema(problema => {
 							return [...problema, level.problem[p]];
 						});
@@ -84,7 +106,16 @@ export const ClassName = () => {
 						<tr key={stu.id}>
 							<th>{stu.name}</th>
 							{arrayDeTh.map((c, index) => {
-								return <Problems key={index} problem={problema[index]} />;
+								return (
+									<Problems
+										key={index}
+										problem={problema[index]}
+										levels={level[index]}
+										levelNumberPaint={levelNumber}
+										completedT={completedTrue}
+										stageT={stages[index]}
+									/>
+								);
 							})}
 						</tr>
 					))}
