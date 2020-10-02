@@ -3,16 +3,42 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Problems } from "../component/Problems";
 
+function getLastLevel(stageElement) {
+	let string_levels = Object.keys(stageElement.level);
+	//console.log(string_levels);
+	var levels = string_levels.map(function(x) {
+		return parseInt(x, 10);
+	});
+	levels.sort();
+	let lastLevel = levels[levels.length - 1];
+	//console.log(lastLevel);
+	return lastLevel.toString();
+}
+
+function getLastProblem(stageElement, levels) {
+	//const [lastProblemCompleted, setLastProblemCompleted] = useState(null);
+
+	let lastProblems = Object.keys(stageElement.level[levels].problem).filter(
+		pro => stageElement.level[levels].problem[pro].completed === true
+	);
+
+	console.log("estoy aqui", lastProblems);
+
+	var problems = lastProblems.map(function(x) {
+		return parseInt(x, 10);
+	});
+
+	problems.sort();
+
+	let lastProblemInLevel = problems[problems.length - 1];
+
+	console.log(lastProblemInLevel);
+
+	return lastProblemInLevel;
+}
+
 export const ClassName = () => {
 	const { actions, store } = useContext(Context);
-
-	const [levelNumber, setLevelNumber] = useState(null);
-	const [level, setLevel] = useState([]);
-	const [problema, setProblema] = useState([]);
-	const [difficulty, setDifficulty] = useState(null);
-	const [completedTrue, setCompletedTrue] = useState(null);
-
-	const [stages, setStages] = useState([]);
 
 	const arrayDeTh = [];
 	let count = 0;
@@ -26,6 +52,12 @@ export const ClassName = () => {
 		arrayDeTh.push("P".concat(count));
 	}
 
+	store.students.map((key, index) => {
+		const lastLevelKoto = getLastLevel(key.gameStatus.stage["1"]);
+
+		const lastPorblemKoto = getLastProblem(key.gameStatus.stage["1"], lastLevelKoto);
+	});
+
 	function getProblems(student) {
 		let problems = [];
 		console.log();
@@ -35,18 +67,10 @@ export const ClassName = () => {
 			const level = stage.level[e];
 			Object.keys(level.problem).map(p => {
 				problems.push(level.problem[p]);
-
-				//console.log("problem-->>", problem);
-				/* 	Object.keys(problem.difficulty).map(d => {
-                    const difficulty = problem.difficulty[p];
-                    console.log("difficulty--->>>", difficulty); */
-				/* }); */
 			});
 		});
 		return problems;
 	}
-
-	const mapLevel = () => {};
 
 	return (
 		<div>
