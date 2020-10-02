@@ -8,7 +8,7 @@ export const Problems = props => {
 		const { completed, difficulty } = props.problem;
 		const { levels, levelNumberPaint, completedT, stageT } = props;
 
-		console.log("aqui esto€€€€€€€€€€€€", stageT);
+		console.log("aqui esto€€€€€€€€€€€€", props);
 
 		let color = "white";
 		const colors = { "1": "yellow", "2": "green", "3": "red", "4": "blue" };

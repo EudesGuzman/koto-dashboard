@@ -26,55 +26,25 @@ export const ClassName = () => {
 		arrayDeTh.push("P".concat(count));
 	}
 
-	useEffect(
-		() => {
-			//const student = store.students[0];
+	function getProblems(student) {
+		let problems = [];
+		console.log();
+		const stage = student.gameStatus.stage["1"];
 
-			//console.log("holaaaa--->>>>>>>>>>>", store.students);
-			if (store.students.length > 0) {
-				const student = store.students[0];
-				const stage = student.gameStatus.stage["1"];
-				setStages(stages => {
-					return [...stages, stage];
-				});
+		Object.keys(stage.level).map(e => {
+			const level = stage.level[e];
+			Object.keys(level.problem).map(p => {
+				problems.push(level.problem[p]);
 
-				Object.keys(stage.level).map(e => {
-					const level = stage.level[e];
-					//console.log("level----->>", e);
-
-					setLevelNumber(levelNumber => {
-						return e;
-					});
-
-					setLevel(level => {
-						return [...level, stage.level[e]];
-					});
-
-					Object.keys(level.problem).map(p => {
-						if (level.problem[p].completed) {
-							//console.log("aqui esta la p-->", p);
-							setCompletedTrue(completedTrue => {
-								return p;
-							});
-						}
-
-						setProblema(problema => {
-							return [...problema, level.problem[p]];
-						});
-
-						//console.log("problem-->>", problem);
-						/* 	Object.keys(problem.difficulty).map(d => {
-							const difficulty = problem.difficulty[p];
-							console.log("difficulty--->>>", difficulty); */
-						/* }); */
-					});
-				});
-			}
-			//const stage = student.game_status.stage[1];
-			//console.log(Object.keys(stage.level));
-		},
-		[store.students]
-	);
+				//console.log("problem-->>", problem);
+				/* 	Object.keys(problem.difficulty).map(d => {
+                    const difficulty = problem.difficulty[p];
+                    console.log("difficulty--->>>", difficulty); */
+				/* }); */
+			});
+		});
+		return problems;
+	}
 
 	const mapLevel = () => {};
 
@@ -105,17 +75,9 @@ export const ClassName = () => {
 					{store.students.map(stu => (
 						<tr key={stu.id}>
 							<th>{stu.name}</th>
+
 							{arrayDeTh.map((c, index) => {
-								return (
-									<Problems
-										key={index}
-										problem={problema[index]}
-										levels={level[index]}
-										levelNumberPaint={levelNumber}
-										completedT={completedTrue}
-										stageT={stages[index]}
-									/>
-								);
+								return <Problems key={index} problem={getProblems(stu)[index]} />;
 							})}
 						</tr>
 					))}
