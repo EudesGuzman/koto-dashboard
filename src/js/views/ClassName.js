@@ -22,7 +22,7 @@ function getLastProblem(stageElement, levels) {
 		pro => stageElement.level[levels].problem[pro].completed === true
 	);
 
-	console.log("estoy aqui", lastProblems);
+	//console.log("estoy aqui", lastProblems);
 
 	var problems = lastProblems.map(function(x) {
 		return parseInt(x, 10);
@@ -32,9 +32,9 @@ function getLastProblem(stageElement, levels) {
 
 	let lastProblemInLevel = problems[problems.length - 1];
 
-	console.log(lastProblemInLevel);
+	//console.log(lastProblemInLevel);
 
-	return lastProblemInLevel;
+	return lastProblemInLevel.toString();
 }
 
 export const ClassName = () => {
@@ -52,13 +52,13 @@ export const ClassName = () => {
 		arrayDeTh.push("P".concat(count));
 	}
 
-	store.students.map((key, index) => {
-		const lastLevelKoto = getLastLevel(key.gameStatus.stage["1"]);
-
-		const lastPorblemKoto = getLastProblem(key.gameStatus.stage["1"], lastLevelKoto);
-	});
-
 	function getProblems(student) {
+		/* store.students.map((key, index) => {
+			const lastLevelKoto = getLastLevel(key.gameStatus.stage["1"]);
+
+			const lastPorblemKoto = getLastProblem(key.gameStatus.stage["1"], lastLevelKoto);
+		}); */
+
 		let problems = [];
 		console.log();
 		const stage = student.gameStatus.stage["1"];
@@ -69,7 +69,26 @@ export const ClassName = () => {
 				problems.push(level.problem[p]);
 			});
 		});
+
+		console.log(problems);
 		return problems;
+	}
+	function getTrueOrFalse(student, lastLevel, lastProblem) {
+		const stage = student.gameStatus.stage["1"];
+		let isTrueOrFalse = [];
+
+		Object.keys(stage.level).map(e => {
+			const level = stage.level[e];
+			Object.keys(level.problem).map(p => {
+				if (e === lastLevel && p === lastProblem) {
+					isTrueOrFalse.push(true);
+				} else {
+					isTrueOrFalse.push(false);
+				}
+			});
+		});
+
+		return isTrueOrFalse;
 	}
 
 	return (
@@ -101,7 +120,16 @@ export const ClassName = () => {
 							<th>{stu.name}</th>
 
 							{arrayDeTh.map((c, index) => {
-								return <Problems key={index} problem={getProblems(stu)[index]} />;
+								const lastLevelKoto = getLastLevel(stu.gameStatus.stage["1"]);
+								const lastPorblemKoto = getLastProblem(stu.gameStatus.stage["1"], lastLevelKoto);
+
+								return (
+									<Problems
+										key={index}
+										problem={getProblems(stu)[index]}
+										trueOrFalse={getTrueOrFalse(stu, lastLevelKoto, lastPorblemKoto)[index]}
+									/>
+								);
 							})}
 						</tr>
 					))}
