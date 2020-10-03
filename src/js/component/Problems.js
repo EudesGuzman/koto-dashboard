@@ -7,7 +7,7 @@ export const Problems = props => {
 	} else {
 		const { completed, difficulty } = props.problem;
 		const { trueOrFalse } = props;
-		console.log("aqui esto€€€€€€€€€€€€", trueOrFalse);
+		//console.log("aqui esto€€€€€€€€€€€€", trueOrFalse);
 
 		let color = "white";
 		const colors = { "1": "yellow", "2": "green", "3": "red", "4": "blue" };
@@ -29,7 +29,18 @@ export const Problems = props => {
 				</td>
 			);
 		} else {
-			return <td style={{ "background-color": color }} />;
+			console.log(difficulty[1].started, "started");
+			console.log(difficulty[1].completed, "completed");
+
+			if (difficulty[1].started == true && difficulty[1].completed == false) {
+				return (
+					<td className="problem-not-finished">
+						<i className="fa fa-times " aria-hidden="true" />
+					</td>
+				);
+			} else {
+				return <td style={{ "background-color": color }} />;
+			}
 		}
 	}
 };
