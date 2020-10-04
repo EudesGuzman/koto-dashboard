@@ -5,6 +5,7 @@ import { Problems } from "../component/Problems";
 
 function getLastLevel(stageElement) {
 	let string_levels = Object.keys(stageElement.level);
+	//console.log(string_levels);
 	var levels = string_levels.map(function(x) {
 		return parseInt(x, 10);
 	});
@@ -15,9 +16,13 @@ function getLastLevel(stageElement) {
 }
 
 function getLastProblem(stageElement, levels) {
+	//const [lastProblemCompleted, setLastProblemCompleted] = useState(null);
+
 	let lastProblems = Object.keys(stageElement.level[levels].problem).filter(
 		pro => stageElement.level[levels].problem[pro].completed === true
 	);
+
+	//console.log("estoy aqui", lastProblems);
 
 	var problems = lastProblems.map(function(x) {
 		return parseInt(x, 10);
@@ -26,6 +31,8 @@ function getLastProblem(stageElement, levels) {
 	problems.sort();
 
 	let lastProblemInLevel = problems[problems.length - 1];
+
+	//console.log(lastProblemInLevel);
 
 	return lastProblemInLevel.toString();
 }
@@ -47,6 +54,7 @@ export const ClassName = () => {
 
 	function getProblems(student) {
 		let problems = [];
+		console.log();
 		const stage = student.gameStatus.stage["1"];
 
 		Object.keys(stage.level).map(e => {
@@ -58,13 +66,17 @@ export const ClassName = () => {
 
 		return problems;
 	}
+
 	function getTrueOrFalse(student, lastLevel, lastProblem) {
 		const stage = student.gameStatus.stage["1"];
 		let isTrueOrFalse = [];
 
 		Object.keys(stage.level).map(e => {
 			const level = stage.level[e];
+
 			Object.keys(level.problem).map(p => {
+				const problem = level.problem[p];
+
 				if (e === lastLevel && p === lastProblem) {
 					isTrueOrFalse.push(true);
 				} else {
@@ -72,6 +84,7 @@ export const ClassName = () => {
 				}
 			});
 		});
+
 		return isTrueOrFalse;
 	}
 

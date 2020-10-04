@@ -20,14 +20,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 										problem: {
 											"1": {
 												difficulty: {
-													"2": {
+													"1": {
 														points: 0,
 														id: 1,
 														completed: true,
 														playCount: 0,
-														started: false
+														started: true
 													},
-													"1": {
+													"2": {
 														completed: true,
 														playCount: 1,
 														started: true,
@@ -64,9 +64,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 													"2": {
 														points: 0,
 														id: 2,
-														completed: false,
+														completed: true,
 														playCount: 0,
-														started: false
+														started: true
 													},
 													"3": {
 														completed: false,
@@ -97,7 +97,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 													},
 													"2": {
 														playCount: 0,
-														started: false,
+														started: true,
 														points: 0,
 														id: 3,
 														completed: false
@@ -126,7 +126,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 														started: true,
 														points: 0,
 														id: 4,
-														completed: false
+														completed: true
 													},
 													"2": {
 														completed: false,
@@ -147,7 +147,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 														started: false,
 														points: 0,
 														id: 4,
-														completed: true
+														completed: false
 													}
 												}
 											}
@@ -259,7 +259,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 												difficulty: {
 													"1": {
 														playCount: 0,
-														started: true,
+														started: false,
 														points: 0,
 														id: 4,
 														completed: false
@@ -455,10 +455,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 														id: 1,
 														completed: true,
 														playCount: 0,
-														started: true
+														started: false
 													},
 													"1": {
-														completed: false,
+														completed: true,
 														playCount: 1,
 														started: true,
 														points: 55,
@@ -467,7 +467,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 													"3": {
 														playCount: 0,
-														started: true,
+														started: false,
 														points: 0,
 														id: 1,
 														completed: false
@@ -516,7 +516,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 												completed: true
 											},
 											"3": {
-												completed: false,
+												completed: true,
 												difficulty: {
 													"1": {
 														playCount: 1,
@@ -549,7 +549,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 												}
 											},
 											"4": {
-												completed: true,
 												difficulty: {
 													"1": {
 														playCount: 0,

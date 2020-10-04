@@ -6,8 +6,7 @@ export const Problems = props => {
 		return <td />;
 	} else {
 		const { completed, difficulty } = props.problem;
-		const { trueOrFalse } = props;
-		//console.log("aqui esto€€€€€€€€€€€€", trueOrFalse);
+		const { trueOrFalse, started, finished } = props;
 
 		let color = "white";
 		const colors = { "1": "yellow", "2": "green", "3": "red", "4": "blue" };
@@ -22,6 +21,7 @@ export const Problems = props => {
 				}
 			});
 
+		const pruebaa = [];
 		if (trueOrFalse) {
 			return (
 				<td style={{ "background-color": color }}>
@@ -29,10 +29,25 @@ export const Problems = props => {
 				</td>
 			);
 		} else {
-			console.log(difficulty[1].started, "started");
-			console.log(difficulty[1].completed, "completed");
-
 			if (difficulty[1].started == true && difficulty[1].completed == false) {
+				return (
+					<td className="problem-not-finished">
+						<i className="fa fa-times " aria-hidden="true" />
+					</td>
+				);
+			} else if (difficulty[2].started == true && difficulty[2].completed == false) {
+				return (
+					<td className="problem-not-finished">
+						<i className="fa fa-times " aria-hidden="true" />
+					</td>
+				);
+			} else if (difficulty[3].started == true && difficulty[3].completed == false) {
+				return (
+					<td className="problem-not-finished">
+						<i className="fa fa-times " aria-hidden="true" />
+					</td>
+				);
+			} else if (difficulty[4].started == true && difficulty[4].completed == false) {
 				return (
 					<td className="problem-not-finished">
 						<i className="fa fa-times " aria-hidden="true" />
@@ -41,6 +56,6 @@ export const Problems = props => {
 			} else {
 				return <td style={{ "background-color": color }} />;
 			}
-		}
+		} //else
 	}
 };
