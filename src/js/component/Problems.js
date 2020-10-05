@@ -9,7 +9,7 @@ export const Problems = props => {
 		const { trueOrFalse, started, finished } = props;
 
 		let color = "white";
-		const colors = { "1": "yellow", "2": "green", "3": "red", "4": "blue" };
+		const colors = { "1": "#f8e71c", "2": "#f5a623", "3": "#8b470a", "4": "#4a4a4a" };
 
 		Object.keys(difficulty)
 			.sort((a, b) => parseInt(a) - parseInt(b))
@@ -21,7 +21,6 @@ export const Problems = props => {
 				}
 			});
 
-		const pruebaa = [];
 		if (trueOrFalse) {
 			return (
 				<td style={{ "background-color": color }}>
@@ -31,7 +30,7 @@ export const Problems = props => {
 		} else {
 			if (difficulty[1].started == true && difficulty[1].completed == false) {
 				return (
-					<td className="problem-not-finished">
+					<td className="problem-not-finished ">
 						<i className="fa fa-times " aria-hidden="true" />
 					</td>
 				);

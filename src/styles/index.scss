@@ -109,3 +109,57 @@ i.fa.fa-times {
     justify-content: center;
 }
 
+.legenda{
+    max-width: 965px;
+    margin: 0 auto;
+}
+.problem-not-finished{
+    background-color: #d8d8d8;
+}
+.d1{
+    background-color: #f8e71c;
+    border-radius: 25px;
+    
+    }
+.d2{
+    background-color:#f5a623;
+    border-radius: 25px;}
+.d3{
+    background-color:#8b470a;
+    border-radius: 25px;} 
+.d4{
+    background-color:#4a4a4a;
+    border-radius: 25px;}
+
+.legend{
+        min-width: 60px;
+        max-height: 10px;
+    
+    margin-top: 8px;
+}
+
+.marcas{
+    margin: auto;
+}
+
+/* tabla */
+table{
+margin: 0 auto;
+min-width: 965px;
+}
+table td {
+       border-left: 1px solid #b4b4b4;
+       border-right: 1px solid #b4b4b4;
+}
+table th {
+    min-width: 30px;
+    border-right: 1px solid #b4b4b4;
+}
+
+/* table td:first-child {
+       border-left: none;
+}
+
+table td:last-child {
+       border-right: none;
+} */

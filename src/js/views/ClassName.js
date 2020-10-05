@@ -90,16 +90,28 @@ export const ClassName = () => {
 
 	return (
 		<div>
-			<table border="1">
+			<table>
 				<thead>
 					<tr>
 						<th />
-						<th colSpan="4">L1</th>
-						<th colSpan="4">L2</th>
-						<th colSpan="4">L3</th>
-						<th colSpan="4">L4</th>
-						<th colSpan="4">L5</th>
-						<th colSpan="4">L6</th>
+						<th colSpan="4" className="text-center">
+							L1
+						</th>
+						<th colSpan="4" className="text-center">
+							L2
+						</th>
+						<th colSpan="4" className="text-center">
+							L3
+						</th>
+						<th colSpan="4" className="text-center">
+							L4
+						</th>
+						<th colSpan="4" className="text-center">
+							L5
+						</th>
+						<th colSpan="4" className="text-center">
+							L6
+						</th>
 					</tr>
 
 					<tr>
@@ -108,7 +120,11 @@ export const ClassName = () => {
 						</th>
 
 						{arrayDeTh.map((c, index) => {
-							return <th key={index}>{c}</th>;
+							return (
+								<th key={index} className="text-center">
+									{c}
+								</th>
+							);
 						})}
 					</tr>
 
@@ -132,6 +148,90 @@ export const ClassName = () => {
 					))}
 				</thead>
 			</table>
+
+			<br />
+			<div className="legenda">
+				<h5>Information</h5>
+
+				<div className="container-flex">
+					<div className="row">
+						<div className="col-sm">
+							{/* ************** */}
+							<div className="container">
+								<div className="row">
+									<div className="col-xs  legend d1"> </div>
+									<div className="col-sm ">Level 1</div>
+								</div>
+							</div>
+
+							{/* ************** */}
+						</div>
+						<div className="col-sm">
+							{/* ************** */}
+							<div className="container">
+								<div className="row">
+									<div className="col-xs  legend d3" />
+									<div className="col-sm ">Level 3</div>
+								</div>
+							</div>
+
+							{/* ************** */}
+						</div>
+						<div className="col-sm">
+							{/* ************** */}
+							<div className="container">
+								<div className="row">
+									<div className="col-xs  lastPoint legend marcas">
+										<i className="fas fa-circle lastPoint" />
+									</div>
+									<div className="col-sm ">The highest problem resolved</div>
+								</div>
+							</div>
+
+							{/* ************** */}
+						</div>
+					</div>
+					<br />
+					{/* ******   ROW 2 ********* */}
+					<div className="row">
+						<div className="col-sm">
+							{/* ************** */}
+							<div className="container">
+								<div className="row">
+									<div className="col-xs  legend d2" />
+									<div className="col-sm  ">Level 2</div>
+								</div>
+							</div>
+
+							{/* ************** */}
+						</div>
+						<div className="col-sm">
+							{/* ************** */}
+							<div className="container">
+								<div className="row">
+									<div className="col-xs  legend d4" />
+									<div className="col-sm ">Level 4</div>
+								</div>
+							</div>
+
+							{/* ************** */}
+						</div>
+						<div className="col-sm">
+							{/* ************** */}
+							<div className="container">
+								<div className="row">
+									<div className="col-xs  legend marcas">
+										<i className="fa fa-times " aria-hidden="true" />
+									</div>
+									<div className="col-sm ">Abandoned after trying</div>
+								</div>
+							</div>
+
+							{/* ************** */}
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
