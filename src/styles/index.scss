@@ -111,7 +111,7 @@ i.fa.fa-times {
 
 .legenda{
     max-width: 965px;
-    margin: 0 auto;
+    margin: 0 auto ;
 }
 .problem-not-finished{
     background-color: #d8d8d8;
@@ -156,10 +156,28 @@ table th {
     border-right: 1px solid #b4b4b4;
 }
 
-/* table td:first-child {
-       border-left: none;
+body {
+    overflow:hidden;
 }
 
-table td:last-child {
-       border-right: none;
-} */
+.scrollbar-kotokan::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #F5F5F5;
+border-radius: 10px; }
+
+.scrollbar-kotokan::-webkit-scrollbar {
+width: 12px;
+background-color: #F5F5F5; }
+
+.scrollbar-kotokan::-webkit-scrollbar-thumb {
+border-radius: 10px;
+background-color: #F5A623; }
+
+
+.scroll {
+position: relative;
+overflow-y: scroll;
+height: 460px;
+width: 1100px;
+margin: 0 auto; 
+}

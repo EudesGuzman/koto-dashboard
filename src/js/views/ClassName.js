@@ -88,67 +88,75 @@ export const ClassName = () => {
 
 	return (
 		<div>
-			<table>
-				<thead>
-					<tr>
-						<th />
-						<th colSpan="4" className="text-center">
-							L1
-						</th>
-						<th colSpan="4" className="text-center">
-							L2
-						</th>
-						<th colSpan="4" className="text-center">
-							L3
-						</th>
-						<th colSpan="4" className="text-center">
-							L4
-						</th>
-						<th colSpan="4" className="text-center">
-							L5
-						</th>
-						<th colSpan="4" className="text-center">
-							L6
-						</th>
-					</tr>
-
-					<tr>
-						<th scope="row" abbr="Capacidad" className="text-uppercase">
-							students
-						</th>
-
-						{arrayDeTh.map((c, index) => {
-							return (
-								<th key={index} className="text-center">
-									{c}
+			<div>
+				<div className="scroll scrollbar-kotokan">
+					<table>
+						<thead>
+							<tr>
+								<th />
+								<th colSpan="4" className="text-center">
+									L1
 								</th>
-							);
-						})}
-					</tr>
+								<th colSpan="4" className="text-center">
+									L2
+								</th>
+								<th colSpan="4" className="text-center">
+									L3
+								</th>
+								<th colSpan="4" className="text-center">
+									L4
+								</th>
+								<th colSpan="4" className="text-center">
+									L5
+								</th>
+								<th colSpan="4" className="text-center">
+									L6
+								</th>
+							</tr>
 
-					{store.students.map(stu => (
-						<tr key={stu.id}>
-							<th>{stu.name}</th>
+							<tr>
+								<th scope="row" abbr="Capacidad" className="text-uppercase">
+									students
+								</th>
 
-							{arrayDeTh.map((c, index) => {
-								const lastLevelKoto = getLastLevel(stu.game_status.stage["1"]);
-								const lastPorblemKoto = getLastProblem(stu.game_status.stage["1"], lastLevelKoto);
+								{arrayDeTh.map((c, index) => {
+									return (
+										<th key={index} className="text-center">
+											{c}
+										</th>
+									);
+								})}
+							</tr>
 
-								return (
-									<Problems
-										key={index}
-										problem={getProblems(stu)[index]}
-										trueOrFalse={getTrueOrFalse(stu, lastLevelKoto, lastPorblemKoto)[index]}
-									/>
-								);
-							})}
-						</tr>
-					))}
-				</thead>
-			</table>
+							{store.students.map(stu => (
+								<tr key={stu.id}>
+									<th>{stu.name}</th>
 
+									{arrayDeTh.map((c, index) => {
+										const lastLevelKoto = getLastLevel(stu.game_status.stage["1"]);
+										const lastPorblemKoto = getLastProblem(
+											stu.game_status.stage["1"],
+											lastLevelKoto
+										);
+
+										return (
+											<Problems
+												key={index}
+												problem={getProblems(stu)[index]}
+												trueOrFalse={getTrueOrFalse(stu, lastLevelKoto, lastPorblemKoto)[index]}
+											/>
+										);
+									})}
+								</tr>
+							))}
+						</thead>
+					</table>
+				</div>
+
+				<br />
+			</div>
 			<br />
-			<div className="legenda">
+			<div className="legenda ">
 				<h5>Information</h5>
 
 				<div className="container-flex">

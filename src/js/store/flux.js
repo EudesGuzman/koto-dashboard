@@ -51,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadStudent: async () => {
 				let response = await fetch(
-					"https://3000-c0e6723d-1d97-4618-bfa9-5f20d0969017.ws-eu01.gitpod.io//teachers/11/students"
+					"https://3000-d4a654a9-4196-4cdd-a606-9a9c9e7e525d.ws-eu01.gitpod.io/teachers/11/students"
 				);
 				response = await response.json();
 				console.log(response);

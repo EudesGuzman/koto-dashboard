@@ -46,10 +46,10 @@ const Layout = () => {
 							<Navbar />
 							<div className="container-fluid h-100">
 								<div className="row h-100">
-									<div className="col-2 h-100">
+									<div className="col-2 h-100 mr-0 pr-0">
 										<SideBar />
 									</div>
-									<div className="col-10  p-2">
+									<div className="col-9  pt-3 ml-0 pl-0 mr-0 pr-0">
 										<ClassName />
 									</div>
 								</div>
