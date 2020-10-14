@@ -11,28 +11,37 @@ function getLastLevel(stageElement) {
 	});
 
 	levels.sort();
+
 	let lastLevel = levels[levels.length - 1];
+
 	return lastLevel.toString();
 }
 
 function getLastProblem(stageElement, levels) {
-	let lastProblems = Object.keys(stageElement.level[levels].problem).filter(
-		dificultad => stageElement.level[levels].problem[dificultad].completed === true
-	);
+	let problemKeys = Object.keys(stageElement.level[levels].problem);
 
-	if (lastProblems.length == 0) {
-		lastProblems = ["1"];
-	}
+	let problemCompleted = [];
 
-	var problems = lastProblems.map(function(x) {
-		return parseInt(x, 10);
+	const completedProblemKeys = problemKeys.filter(p => {
+		const problem = stageElement.level[levels].problem[p];
+		const diffKeys = Object.keys(problem.difficulty);
+		const completedDiffKeys = diffKeys.filter(dk => problem.difficulty[dk].completed);
+		return completedDiffKeys.length > 0;
 	});
 
-	problems.sort();
+	if (completedProblemKeys.length > 0) {
+		var problems = completedProblemKeys.map(function(x) {
+			return parseInt(x, 10);
+		});
 
-	let lastProblemInLevel = problems[problems.length - 1];
+		problems.sort();
 
-	return lastProblemInLevel.toString();
+		let lastProblemInLevel = problems[problems.length - 1];
+
+		return lastProblemInLevel.toString();
+	} else {
+		return null;
+	}
 }
 
 export const ClassName = () => {
@@ -41,7 +50,7 @@ export const ClassName = () => {
 	const arrayDeTh = [];
 	let count = 0;
 
-	for (let x = 0; x < 24; x++) {
+	for (let x = 0; x < 32; x++) {
 		if (count < 4) {
 			count += 1;
 		} else {
@@ -112,6 +121,9 @@ export const ClassName = () => {
 								<th colSpan="4" className="text-center">
 									L6
 								</th>
+								<th colSpan="4" className="text-center">
+									L7
+								</th>
 							</tr>
 
 							<tr>
@@ -134,6 +146,7 @@ export const ClassName = () => {
 
 									{arrayDeTh.map((c, index) => {
 										const lastLevelKoto = getLastLevel(stu.game_status.stage["1"]);
+
 										const lastPorblemKoto = getLastProblem(
 											stu.game_status.stage["1"],
 											lastLevelKoto
