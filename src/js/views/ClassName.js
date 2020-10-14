@@ -47,6 +47,15 @@ function getLastProblem(stageElement, levels) {
 export const ClassName = () => {
 	const { actions, store } = useContext(Context);
 
+	useEffect(
+		() => {
+			if (store.stage["levels"] != undefined) {
+				console.log(store.stage["levels"].length);
+			}
+		},
+		[store.stage]
+	);
+
 	const arrayDeTh = [];
 	let count = 0;
 
