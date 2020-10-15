@@ -49,7 +49,6 @@ export const Stage = () => {
 	const [content, setContent] = useState({});
 	const [stage, setStage] = useState();
 	const { actions, store } = useContext(Context);
-
 	const [headerLevels, setHeaderLevels] = useState([]);
 	const [headerProblems, setHeaderProblems] = useState([]);
 	const [studentRows, setStudentRows] = useState([]);
@@ -99,20 +98,27 @@ export const Stage = () => {
 
 	useEffect(
 		() => {
+			// console.log(levels);
+
 			if (stage) {
-				console.log(store.students);
 				setStudentRows(
 					store.students.map(stu => {
+						//console.log(store.students); // array 26 estudiantes
 						let gameStatus = [];
 						const gsStage = stu.game_status.stage[stage];
+						//console.log(gsStage); // counthachi y cada uno de los niveles de cada estudiante
 						if (gsStage !== undefined) {
 							gameStatus = levels.map((level, index) => {
 								const gsLevel = gsStage.level[level["id"].toString()];
+								//console.log(gsLevel); //Recorre cada nivel de cada estudiante y nos devuelve los problemas
 								const levelProblems = [];
 								for (let p = 1; p <= level["problemCount"]; p++) {
+									//console.log(level["problemCount"]); // numero de problema que tiene cada nivel
 									if (gsLevel !== undefined) {
+										//console.log(gsLevel); // aray con los problemas del gs
 										const gsProblem = gsLevel.problem[p.toString()];
 										if (gsProblem !== undefined) {
+											//console.log(gsProblem); // array con las dificultades de los levels
 											levelProblems.push(
 												<Problem key={index} problem={gsProblem} isLastProblem={false} />
 											);
@@ -125,11 +131,29 @@ export const Stage = () => {
 										levelProblems.push(<td key={index} />);
 									}
 								}
-								console.log(levelProblems);
+								// console.log(levelProblems);
 								return levelProblems;
 							});
+						} else {
+							//   *********************************************************************** */ gs-stage
+							let suma = 0;
+							levels.map((level, index) => {
+								suma += level["problemCount"];
+							});
+							let tdvacio = [];
+							for (let i = 0; i < suma; i++) {
+								tdvacio.push(<td />);
+							}
+							return (
+								<tr key={stu.id}>
+									<th>{stu.name}</th>
+									{tdvacio}
+								</tr>
+							);
 						}
-						console.log("hola");
+
+						//   *********************************************************************** */ gs-stage
+
 						return (
 							<tr key={stu.id}>
 								<th>{stu.name}</th>
@@ -142,17 +166,6 @@ export const Stage = () => {
 		},
 		[stage, store.students]
 	);
-
-	const arrayDeTh = [];
-	let count = 0;
-	for (let x = 0; x < 35; x++) {
-		if (count < 4) {
-			count += 1;
-		} else {
-			count = 1;
-		}
-		arrayDeTh.push("P".concat(count));
-	}
 
 	function getProblems(student) {
 		let problems = [];
@@ -192,7 +205,7 @@ export const Stage = () => {
 	return (
 		<div>
 			<div>
-				{/* <div className="content-name font-weight-bold">Class: {content.name} ▼</div> */}
+				{content != null && <div className="content-name font-weight-bold">Class: {content.name} </div>}
 
 				<div className="scroll scrollbar-kotokan">
 					<table>
