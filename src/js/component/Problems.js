@@ -23,7 +23,7 @@ export const Problems = props => {
 
 		if (trueOrFalse) {
 			return (
-				<td style={{ "background-color": color }}>
+				<td style={{ backgroundColor: color }}>
 					<i className="fas fa-circle lastPoint" />
 				</td>
 			);
@@ -35,7 +35,7 @@ export const Problems = props => {
 					</td>
 				);
 			} else {
-				return <td style={{ "background-color": color }} />;
+				return <td style={{ backgroundColor: color }} />;
 			}
 		} //else
 	}

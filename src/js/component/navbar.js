@@ -8,7 +8,7 @@ export const Navbar = () => {
 	return (
 		<div className="navbar">
 			<div className="navbar__left">
-				<Link>
+				<Link to="/">
 					<img src={logo} />
 				</Link>
 
@@ -16,7 +16,7 @@ export const Navbar = () => {
 
 				<span className="badge badge-secondary ml-2">Beta</span>
 
-				<Link className="navbar__link ml-2 ">
+				<Link to="/" className="navbar__link ml-2 ">
 					<b>Home</b>
 				</Link>
 			</div>
