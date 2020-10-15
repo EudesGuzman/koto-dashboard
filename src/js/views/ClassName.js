@@ -45,12 +45,13 @@ function getLastProblem(stageElement, levels) {
 }
 
 export const ClassName = () => {
+	const [levels, setLevels] = useState([]);
 	const { actions, store } = useContext(Context);
 
 	useEffect(
 		() => {
 			if (store.stage["levels"] != undefined) {
-				console.log(store.stage["levels"].length);
+				setLevels(store.stage["levels"]);
 			}
 		},
 		[store.stage]
@@ -58,8 +59,7 @@ export const ClassName = () => {
 
 	const arrayDeTh = [];
 	let count = 0;
-
-	for (let x = 0; x < 32; x++) {
+	for (let x = 0; x < 35; x++) {
 		if (count < 4) {
 			count += 1;
 		} else {
@@ -70,7 +70,6 @@ export const ClassName = () => {
 
 	function getProblems(student) {
 		let problems = [];
-		console.log();
 		const stage = student.game_status.stage["1"];
 
 		Object.keys(stage.level).map(e => {
@@ -103,6 +102,7 @@ export const ClassName = () => {
 
 		return isTrueOrFalse;
 	}
+	let prueba = [];
 
 	return (
 		<div>
@@ -112,27 +112,15 @@ export const ClassName = () => {
 						<thead>
 							<tr>
 								<th />
-								<th colSpan="4" className="text-center">
-									L1
-								</th>
-								<th colSpan="4" className="text-center">
-									L2
-								</th>
-								<th colSpan="4" className="text-center">
-									L3
-								</th>
-								<th colSpan="4" className="text-center">
-									L4
-								</th>
-								<th colSpan="4" className="text-center">
-									L5
-								</th>
-								<th colSpan="4" className="text-center">
-									L6
-								</th>
-								<th colSpan="4" className="text-center">
-									L7
-								</th>
+
+								{levels.map(function(level, index) {
+									let problemCount = level.problemCount;
+									return (
+										<th colSpan={problemCount} className="text-center" key={index}>
+											L {level["id"]}
+										</th>
+									);
+								})}
 							</tr>
 
 							<tr>
@@ -140,12 +128,19 @@ export const ClassName = () => {
 									students
 								</th>
 
-								{arrayDeTh.map((c, index) => {
-									return (
-										<th key={index} className="text-center">
-											{c}
-										</th>
-									);
+								{levels.map(function(level, index) {
+									for (let i = 0; i < level.problemCount; i++) {
+										prueba.push(i);
+									}
+								})}
+								{prueba.map(function(level, index) {
+									{
+										return (
+											<th key={index} className="text-center">
+												{level + 1}
+											</th>
+										);
+									}
 								})}
 							</tr>
 
