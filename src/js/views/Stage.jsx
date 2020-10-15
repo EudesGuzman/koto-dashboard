@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import { Context } from "../store/appContext";
-import { Problems } from "../component/Problems";
+import { Problem } from "../component/Problem";
 
 function getLastLevel(stageElement) {
 	let string_levels = Object.keys(stageElement.level);
@@ -44,25 +44,104 @@ function getLastProblem(stageElement, levels) {
 	}
 }
 
-export const ClassName = () => {
+export const Stage = () => {
 	const [levels, setLevels] = useState([]);
-	const [content, setContent] = useState([]);
+	const [content, setContent] = useState({});
+	const [stage, setStage] = useState();
 	const { actions, store } = useContext(Context);
+
+	const [headerLevels, setHeaderLevels] = useState([]);
+	const [headerProblems, setHeaderProblems] = useState([]);
+	const [studentRows, setStudentRows] = useState([]);
 
 	useEffect(
 		() => {
-			if (store.stage["levels"] != undefined) {
+			if (store.stage != undefined) {
+				setStage(store.stage["kotokan_id"]);
 				setLevels(store.stage["levels"]);
-			}
-			if (store.stage["content"] != undefined) {
 				setContent(store.stage["content"]);
 			}
 		},
 		[store.stage]
 	);
 
-	/* console.log(levels);
-	console.log(content.name); */
+	useEffect(
+		() => {
+			if (levels) {
+				setHeaderLevels(
+					levels.map(function(level, index) {
+						let problemCount = level.problemCount;
+						return (
+							<th colSpan={problemCount} className="text-center texto-gris" key={index}>
+								L {level["id"]}
+							</th>
+						);
+					})
+				);
+
+				setHeaderProblems(
+					levels.map(function(level, index) {
+						let row = [];
+						for (let i = 0; i < level.problemCount; i++) {
+							row.push(
+								<th key={i + 1} className="text-center texto-gris">
+									{i + 1}
+								</th>
+							);
+						}
+						return row;
+					})
+				);
+			}
+		},
+		[levels]
+	);
+
+	useEffect(
+		() => {
+			if (stage) {
+				console.log(store.students);
+				setStudentRows(
+					store.students.map(stu => {
+						let gameStatus = [];
+						const gsStage = stu.game_status.stage[stage];
+						if (gsStage !== undefined) {
+							gameStatus = levels.map((level, index) => {
+								const gsLevel = gsStage.level[level["id"].toString()];
+								const levelProblems = [];
+								for (let p = 1; p <= level["problemCount"]; p++) {
+									if (gsLevel !== undefined) {
+										const gsProblem = gsLevel.problem[p.toString()];
+										if (gsProblem !== undefined) {
+											levelProblems.push(
+												<Problem key={index} problem={gsProblem} isLastProblem={false} />
+											);
+										} else {
+											// Si no tiene el problema, devuelve casilla vacia
+											levelProblems.push(<td key={index} />);
+										}
+									} else {
+										// Si no tiene el problema, devuelve casilla vacia
+										levelProblems.push(<td key={index} />);
+									}
+								}
+								console.log(levelProblems);
+								return levelProblems;
+							});
+						}
+						console.log("hola");
+						return (
+							<tr key={stu.id}>
+								<th>{stu.name}</th>
+								{gameStatus}
+							</tr>
+						);
+					})
+				);
+			}
+		},
+		[stage, store.students]
+	);
 
 	const arrayDeTh = [];
 	let count = 0;
@@ -109,73 +188,28 @@ export const ClassName = () => {
 
 		return isTrueOrFalse;
 	}
-	let prueba = [];
 
 	return (
 		<div>
 			<div>
-				<div className="content-name font-weight-bold">Class: {content.name} ▼</div>
+				{/* <div className="content-name font-weight-bold">Class: {content.name} ▼</div> */}
 
 				<div className="scroll scrollbar-kotokan">
 					<table>
 						<thead>
 							<tr>
 								<th />
-
-								{levels.map(function(level, index) {
-									let problemCount = level.problemCount;
-									return (
-										<th colSpan={problemCount} className="text-center texto-gris" key={index}>
-											L {level["id"]}
-										</th>
-									);
-								})}
+								{headerLevels}
 							</tr>
 
 							<tr>
 								<th scope="row" abbr="Capacidad" className="text-uppercase">
 									students
 								</th>
-
-								{levels.map(function(level, index) {
-									for (let i = 0; i < level.problemCount; i++) {
-										prueba.push(i);
-									}
-								})}
-								{prueba.map(function(level, index) {
-									{
-										return (
-											<th key={index} className="text-center texto-gris">
-												{level + 1}
-											</th>
-										);
-									}
-								})}
+								{headerProblems}
 							</tr>
-
-							{store.students.map(stu => (
-								<tr key={stu.id}>
-									<th>{stu.name}</th>
-
-									{arrayDeTh.map((c, index) => {
-										const lastLevelKoto = getLastLevel(stu.game_status.stage["1"]);
-
-										const lastPorblemKoto = getLastProblem(
-											stu.game_status.stage["1"],
-											lastLevelKoto
-										);
-
-										return (
-											<Problems
-												key={index}
-												problem={getProblems(stu)[index]}
-												trueOrFalse={getTrueOrFalse(stu, lastLevelKoto, lastPorblemKoto)[index]}
-											/>
-										);
-									})}
-								</tr>
-							))}
 						</thead>
+						<tbody>{studentRows}</tbody>
 					</table>
 				</div>
 

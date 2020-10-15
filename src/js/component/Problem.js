@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { ClassName } from "../views/ClassName";
 
-export const Problems = props => {
+export const Problem = props => {
 	if (props.problem === undefined) {
 		return <td />;
 	} else {
 		const { completed, difficulty } = props.problem;
-		const { trueOrFalse, started, finished } = props;
+		const { isLastProblem, started, finished } = props;
 
 		let color = "";
 		const colors = { "1": "#f8e71c", "2": "#f5a623", "3": "#8b470a", "4": "#4a4a4a" };
@@ -21,7 +20,7 @@ export const Problems = props => {
 				}
 			});
 
-		if (trueOrFalse) {
+		if (isLastProblem) {
 			return (
 				<td style={{ backgroundColor: color }}>
 					<i className="fas fa-circle lastPoint" />

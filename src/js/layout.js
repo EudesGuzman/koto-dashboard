@@ -8,7 +8,7 @@ import { Single } from "./views/single";
 import { Login } from "./views/login";
 import { Problems } from "./views/problems";
 import { Home } from "./views/Home.js";
-import { ClassName } from "./views/ClassName";
+import { Stage } from "./views/Stage.jsx";
 
 import injectContext from "./store/appContext";
 
@@ -50,7 +50,7 @@ const Layout = () => {
 										<SideBar />
 									</div>
 									<div className="col-9  pt-3 ml-0 pl-0 mr-0 pr-0">
-										<ClassName />
+										<Stage />
 									</div>
 								</div>
 							</div>
