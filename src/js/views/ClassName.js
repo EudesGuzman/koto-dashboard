@@ -46,6 +46,7 @@ function getLastProblem(stageElement, levels) {
 
 export const ClassName = () => {
 	const [levels, setLevels] = useState([]);
+	const [content, setContent] = useState([]);
 	const { actions, store } = useContext(Context);
 
 	useEffect(
@@ -53,9 +54,15 @@ export const ClassName = () => {
 			if (store.stage["levels"] != undefined) {
 				setLevels(store.stage["levels"]);
 			}
+			if (store.stage["content"] != undefined) {
+				setContent(store.stage["content"]);
+			}
 		},
 		[store.stage]
 	);
+
+	/* console.log(levels);
+	console.log(content.name); */
 
 	const arrayDeTh = [];
 	let count = 0;
@@ -107,6 +114,8 @@ export const ClassName = () => {
 	return (
 		<div>
 			<div>
+				<div className="content-name font-weight-bold">Class: {content.name} ▼</div>
+
 				<div className="scroll scrollbar-kotokan">
 					<table>
 						<thead>
@@ -116,7 +125,7 @@ export const ClassName = () => {
 								{levels.map(function(level, index) {
 									let problemCount = level.problemCount;
 									return (
-										<th colSpan={problemCount} className="text-center" key={index}>
+										<th colSpan={problemCount} className="text-center texto-gris" key={index}>
 											L {level["id"]}
 										</th>
 									);
@@ -136,7 +145,7 @@ export const ClassName = () => {
 								{prueba.map(function(level, index) {
 									{
 										return (
-											<th key={index} className="text-center">
+											<th key={index} className="text-center texto-gris">
 												{level + 1}
 											</th>
 										);

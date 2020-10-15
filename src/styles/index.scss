@@ -177,7 +177,18 @@ background-color: #F5A623; }
 .scroll {
 position: relative;
 overflow-y: scroll;
-height: 460px;
+height: 440px;
 width: 1100px;
 margin: 0 auto; 
+}
+
+.content-name{
+    margin: 1% auto; 
+    width: 1100px;
+    font-size: small;
+}
+
+.texto-gris{
+    color: #b4b4b4;
+    font-weight: 500;
 }
