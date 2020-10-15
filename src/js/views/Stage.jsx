@@ -136,18 +136,18 @@ export const Stage = () => {
 							});
 						} else {
 							//   *********************************************************************** */ gs-stage
-							let suma = 0;
+							let totalProblemsCount = 0;
 							levels.map((level, index) => {
-								suma += level["problemCount"];
+								totalProblemsCount += level["problemCount"];
 							});
-							let tdvacio = [];
-							for (let i = 0; i < suma; i++) {
-								tdvacio.push(<td />);
+							let emptyTd = [];
+							for (let i = 0; i < totalProblemsCount; i++) {
+								emptyTd.push(<td />);
 							}
 							return (
 								<tr key={stu.id}>
 									<th>{stu.name}</th>
-									{tdvacio}
+									{emptyTd}
 								</tr>
 							);
 						}
