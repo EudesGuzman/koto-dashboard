@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadStudent: async () => {
 				let response = await fetch(
-					"https://3000-da977607-f05a-4c9d-b161-62235b10b6e4.ws-eu01.gitpod.io/teachers/11/students"
+					"https://3000-bd403ad5-5e5a-4d6b-8e75-4d149a2f2346.ws-eu01.gitpod.io/teachers/11/students"
 				);
 				response = await response.json();
 				setStore({
@@ -61,7 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadStage: async () => {
 				let response = await fetch(
-					"https://3000-da977607-f05a-4c9d-b161-62235b10b6e4.ws-eu01.gitpod.io/stages"
+					"https://3000-bd403ad5-5e5a-4d6b-8e75-4d149a2f2346.ws-eu01.gitpod.io/stages"
 				);
 				response = await response.json();
 				setStore({

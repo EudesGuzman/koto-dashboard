@@ -55,16 +55,19 @@ export const Stage = () => {
 	const [studentRows, setStudentRows] = useState([]);
 	const [prueba, setSPrueba] = useState([]);
 
+	const [numberOfStage, setNumberOfStage] = useState(0);
+
 	useEffect(
 		() => {
 			if (store.stage != undefined && store.stage.length > 0) {
-				setStage(store.stage[0]["kotokan_id"]);
-				setLevels(store.stage[0]["levels"]);
-				setContent(store.stage[0]["content"]);
+				setStage(store.stage[numberOfStage]["kotokan_id"]);
+				setLevels(store.stage[numberOfStage]["levels"]);
+				console.log(numberOfStage);
+				setContent(store.stage[numberOfStage]["content"]);
 				setSPrueba(store.stage);
 			}
 		},
-		[store.stage]
+		[store.stage, numberOfStage]
 	);
 
 	useEffect(
@@ -220,16 +223,22 @@ export const Stage = () => {
 								<Dropdown.Item
 									onClick={() => {
 										setStage(store.stage[0]["kotokan_id"]);
+										setNumberOfStage(0);
 									}}>
 									Class: {store.stage[0]["content"]["name"]}
 								</Dropdown.Item>
 								<Dropdown.Item
 									onClick={() => {
 										setStage(store.stage[1]["kotokan_id"]);
+										setNumberOfStage(1);
 									}}>
 									Class: {store.stage[1]["content"]["name"]}
 								</Dropdown.Item>
-								<Dropdown.Item onClick={() => setStage(store.stage[2]["kotokan_id"])}>
+								<Dropdown.Item
+									onClick={() => {
+										setStage(store.stage[2]["kotokan_id"]);
+										setNumberOfStage(2);
+									}}>
 									Class: {store.stage[2]["content"]["name"]}
 								</Dropdown.Item>
 							</Dropdown.Menu>
