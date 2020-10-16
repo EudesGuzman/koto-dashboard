@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				response = await response.json();
 				setStore({ token: response.token });
 
-				console.log(response);
+				// console.log(response);
 			},
 
 			loadUsers: async () => {
@@ -61,10 +61,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadStage: async () => {
 				let response = await fetch(
-					"https://3000-da977607-f05a-4c9d-b161-62235b10b6e4.ws-eu01.gitpod.io/stages/1"
+					"https://3000-da977607-f05a-4c9d-b161-62235b10b6e4.ws-eu01.gitpod.io/stages"
 				);
 				response = await response.json();
-
 				setStore({
 					stage: response
 				});

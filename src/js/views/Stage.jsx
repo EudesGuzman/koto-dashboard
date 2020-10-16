@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import { Context } from "../store/appContext";
 import { Problem } from "../component/Problem";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 function getLastLevel(stageElement) {
 	let string_levels = Object.keys(stageElement.level);
@@ -52,13 +53,15 @@ export const Stage = () => {
 	const [headerLevels, setHeaderLevels] = useState([]);
 	const [headerProblems, setHeaderProblems] = useState([]);
 	const [studentRows, setStudentRows] = useState([]);
+	const [prueba, setSPrueba] = useState([]);
 
 	useEffect(
 		() => {
-			if (store.stage != undefined) {
-				setStage(store.stage["kotokan_id"]);
-				setLevels(store.stage["levels"]);
-				setContent(store.stage["content"]);
+			if (store.stage != undefined && store.stage.length > 0) {
+				setStage(store.stage[0]["kotokan_id"]);
+				setLevels(store.stage[0]["levels"]);
+				setContent(store.stage[0]["content"]);
+				setSPrueba(store.stage);
 			}
 		},
 		[store.stage]
@@ -98,8 +101,6 @@ export const Stage = () => {
 
 	useEffect(
 		() => {
-			// console.log(levels);
-
 			if (stage) {
 				setStudentRows(
 					store.students.map(stu => {
@@ -202,10 +203,38 @@ export const Stage = () => {
 		return isTrueOrFalse;
 	}
 
+	// console.log(store.stage[0]["content"]["name"]);
+	//console.log(content); //{header: "STAGE 1", name: "The Cross-Off Strategy"}
+
+	//console.log(store.stage[1]["content"]["name"]);
+
 	return (
 		<div>
 			<div>
-				{content != null && <div className="content-name font-weight-bold">Class: {content.name} </div>}
+				{content != null &&
+					store.stage.length > 0 && (
+						<Dropdown className="content-name">
+							<Dropdown.Toggle className="btn-content-name">Class: {content.name}</Dropdown.Toggle>
+
+							<Dropdown.Menu>
+								<Dropdown.Item
+									onClick={() => {
+										setStage(store.stage[0]["kotokan_id"]);
+									}}>
+									Class: {store.stage[0]["content"]["name"]}
+								</Dropdown.Item>
+								<Dropdown.Item
+									onClick={() => {
+										setStage(store.stage[1]["kotokan_id"]);
+									}}>
+									Class: {store.stage[1]["content"]["name"]}
+								</Dropdown.Item>
+								<Dropdown.Item onClick={() => setStage(store.stage[2]["kotokan_id"])}>
+									Class: {store.stage[2]["content"]["name"]}
+								</Dropdown.Item>
+							</Dropdown.Menu>
+						</Dropdown>
+					)}
 
 				<div className="scroll scrollbar-kotokan">
 					<table>
@@ -229,6 +258,8 @@ export const Stage = () => {
 				<br />
 			</div>
 			<br />
+			{/* *********************************  LEYENDAA  ************************** */}
+			{/* *********************************   ************************************    ************************** */}
 			<div className="legenda ">
 				<h5>Information</h5>
 

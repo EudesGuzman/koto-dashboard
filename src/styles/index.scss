@@ -183,9 +183,54 @@ margin: 0 auto;
 }
 
 .content-name{
-    margin: 1% auto; 
+    margin: 1% auto;
     width: 1100px;
-    font-size: small;
+}
+.btn-content-name {
+    color: #000;
+    background-color: transparent;
+    border: none;
+}
+.btn-content-name:hover {
+    color: #000;
+    background-color: transparent;
+    border: none;
+}
+.btn-content-name:active {
+    color: #000;
+    background-color: transparent;
+    border: none;
+}
+
+
+
+.show > .btn-primary.dropdown-toggle {
+    color: #000;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+     box-shadow: none;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
+      box-shadow: none;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #000;
+    background-color: transparent;
+    border-color: transparent;
+}
+.dropdown-item:active {
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
 }
 
 .texto-gris{
