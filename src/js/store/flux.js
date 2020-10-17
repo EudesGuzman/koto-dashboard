@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			login: async (email, password) => {
 				let response = await fetch(
-					"https://3000-edef1a0e-45d1-4207-a215-9bb4e83c5e0b.ws-eu01.gitpod.io/login",
+					"https://3000-ad4f3710-dc0d-4557-9241-a87d6a3f45f4.ws-eu01.gitpod.io/login",
 					{
 						method: "POST",
 						headers: { Authorization: "Basic " + require("base-64").encode(email + ":" + password) }
@@ -24,9 +24,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 
 				response = await response.json();
-				setStore({ token: response.token });
-
-				// console.log(response);
+				console.log(response);
+				setStore({ token: response });
 			},
 
 			loadUsers: async () => {
@@ -52,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadStudent: async () => {
 				let response = await fetch(
-					"https://3000-bd403ad5-5e5a-4d6b-8e75-4d149a2f2346.ws-eu01.gitpod.io/teachers/11/students"
+					"https://3000-ad4f3710-dc0d-4557-9241-a87d6a3f45f4.ws-eu01.gitpod.io/teachers/11/students"
 				);
 				response = await response.json();
 				setStore({
@@ -61,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadStage: async () => {
 				let response = await fetch(
-					"https://3000-bd403ad5-5e5a-4d6b-8e75-4d149a2f2346.ws-eu01.gitpod.io/stages"
+					"https://3000-ad4f3710-dc0d-4557-9241-a87d6a3f45f4.ws-eu01.gitpod.io/stages"
 				);
 				response = await response.json();
 				setStore({

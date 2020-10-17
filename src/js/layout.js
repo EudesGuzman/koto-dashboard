@@ -5,7 +5,7 @@ import "../styles/layout.scss";
 
 import { Demo } from "./views/problems";
 import { Single } from "./views/single";
-import { Login } from "./views/login";
+import Login from "./views/login";
 import { Problems } from "./views/problems";
 import { Home } from "./views/Home.js";
 import { Stage } from "./views/Stage.jsx";

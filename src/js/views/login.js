@@ -1,14 +1,54 @@
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import "../../styles/login.scss";
 import chica from "../../img/login-img.png";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Context } from "../store/appContext";
+import { withRouter } from "react-router-dom";
 
-export const Login = () => {
+import PropTypes from "prop-types";
+
+const Login = props => {
 	const [email, setEmail] = React.useState("");
 	const [pass, setPass] = React.useState("");
+	const [error, setError] = React.useState(null);
 
-	const { actions } = useContext(Context);
+	const { actions, store } = useContext(Context);
+
+	const procesarDatos = e => {
+		console.log(e);
+		e.preventDefault();
+
+		if (!email.trim()) {
+			//console.log("ingrese email")
+			setError("ingrese email");
+			return;
+		}
+		if (!pass.trim()) {
+			//console.log("ingrese pass")
+			setError("ingrese pass");
+			return;
+		}
+		login();
+	};
+	console.log(error);
+	const login = React.useCallback(
+		async () => {
+			try {
+				await actions.login(email, pass);
+				const res = store.token;
+				console.log(res.true);
+				if (res.true) {
+					setEmail("");
+					setPass("");
+					setError(null);
+					props.history.push("/");
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		[email, pass, props.history]
+	);
 
 	return (
 		<div className="login">
@@ -22,13 +62,11 @@ export const Login = () => {
 						Log in to Kotokan for schools <span className="badge badge-secondary">Beta</span>
 					</p>
 
-					<form>
+					<form onSubmit={procesarDatos}>
 						<div className="form-group">
 							<input
 								type="email"
 								className="form-control"
-								id="exampleInputEmail1"
-								aria-describedby="emailHelp"
 								placeholder="Email Address"
 								onChange={e => setEmail(e.target.value)}
 								value={email}
@@ -45,12 +83,7 @@ export const Login = () => {
 							/>
 						</div>
 
-						<button
-							className="btn btn-primary btn-lg btn-block"
-							onClick={e => {
-								e.preventDefault();
-								actions.login(email, pass);
-							}}>
+						<button className="btn btn-primary btn-lg btn-block" type="submit">
 							Submit
 						</button>
 					</form>
@@ -69,4 +102,9 @@ export const Login = () => {
 			</div>
 		</div>
 	);
+};
+export default withRouter(Login);
+
+Login.propTypes = {
+	history: PropTypes.object
 };
