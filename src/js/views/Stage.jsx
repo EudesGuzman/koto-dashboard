@@ -109,12 +109,18 @@ export const Stage = () => {
 						store.students.map(stu => {
 							//console.log(store.students); // array 26 estudiantes
 							let gameStatus = [];
+
 							if (stu.game_status.stage !== undefined) {
 								const gsStage = stu.game_status.stage[stage];
+
 								//console.log(gsStage); // counthachi y cada uno de los niveles de cada estudiante
+
 								if (gsStage !== undefined) {
+									let lastLevele = parseInt(getLastLevel(gsStage));
+									let lastProbleme = parseInt(getLastProblem(gsStage, lastLevele));
 									gameStatus = levels.map((level, index) => {
 										const gsLevel = gsStage.level[level["id"].toString()];
+
 										//console.log(gsLevel); //Recorre cada nivel de cada estudiante y nos devuelve los problemas
 										const levelProblems = [];
 										for (let p = 1; p <= level["problemCount"]; p++) {
@@ -124,11 +130,15 @@ export const Stage = () => {
 												const gsProblem = gsLevel.problem[p.toString()];
 												if (gsProblem !== undefined) {
 													//console.log(gsProblem); // array con las dificultades de los levels
+													console.log("levele ->>>>>>", lastLevele, index + 1);
+													console.log("problem -->>", lastProbleme, p);
+													const trueOrFalse = lastLevele === index + 1 && lastProbleme === p;
+													console.log("trueorFlase--->>", trueOrFalse);
 													levelProblems.push(
 														<Problem
 															key={index}
 															problem={gsProblem}
-															isLastProblem={false}
+															isLastProblem={trueOrFalse}
 														/>
 													);
 												} else {

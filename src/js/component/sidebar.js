@@ -14,18 +14,13 @@ export const SideBar = () => {
 		<div className="sidenav h-100 p-2">
 			<ul className="nav flex-column h-100">
 				<li className="nav-item">
-					<Link to="/">
+					<Link className="nav-link active" to="/">
 						<DashboardIcon /> Home
 					</Link>
 				</li>
 				<li className="nav-item">
-					<Link to="/classname">
+					<Link className="nav-link" to="/classname">
 						<SchoolIcon /> ClassName 1
-					</Link>
-				</li>
-				<li className="nav-item">
-					<Link className="nav-link" a="/classname">
-						<SchoolIcon /> ClassName 2
 					</Link>
 				</li>
 				<li className="nav-item">

@@ -6,6 +6,7 @@ export const Problem = props => {
 	} else {
 		const { completed, difficulty } = props.problem;
 		const { isLastProblem, started, finished } = props;
+		console.log(isLastProblem);
 
 		let color = "";
 		const colors = { "1": "#f8e71c", "2": "#f5a623", "3": "#8b470a", "4": "#4a4a4a" };
@@ -27,7 +28,7 @@ export const Problem = props => {
 				</td>
 			);
 		} else {
-			if (difficulty[1].started == true && difficulty[1].completed == false) {
+			if (difficulty[1].started && !difficulty[1].completed) {
 				return (
 					<td className="problem-not-finished ">
 						<i className="fa fa-times " aria-hidden="true" />
