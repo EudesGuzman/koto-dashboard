@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			login: async (email, password) => {
 				let response = await fetch(
-					"https://3000-ad4f3710-dc0d-4557-9241-a87d6a3f45f4.ws-eu01.gitpod.io/login",
+					"https://3000-a15e8bc7-0b68-4bcc-85d9-d84116ba545c.ws-eu01.gitpod.io/login",
 					{
 						method: "POST",
 						headers: { Authorization: "Basic " + require("base-64").encode(email + ":" + password) }
@@ -24,8 +24,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				);
 
 				response = await response.json();
-				console.log(response);
-				setStore({ token: response });
+
+				setStore({ token: response.token });
 			},
 
 			loadUsers: async () => {
@@ -50,17 +50,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			loadStudent: async () => {
-				let response = await fetch(
-					"https://3000-ad4f3710-dc0d-4557-9241-a87d6a3f45f4.ws-eu01.gitpod.io/teachers/11/students"
-				);
-				response = await response.json();
-				setStore({
-					students: response
-				});
+				let urlExt = "https://3000-a15e8bc7-0b68-4bcc-85d9-d84116ba545c.ws-eu01.gitpod.io/students";
+
+				var myHeaders = new Headers();
+
+				/* const token = getStore(); */
+				const token = getStore().token;
+
+				console.log(token);
+
+				myHeaders.append("X-Access-Tokens", token);
+				var requestOptions = {
+					method: "GET",
+					headers: myHeaders
+				};
+
+				try {
+					let res = await fetch(urlExt, requestOptions);
+					let result = await res.json();
+					console.log(result);
+					setStore({
+						students: result
+					});
+				} catch (error) {
+					console.log("error", error);
+				}
 			},
 			loadStage: async () => {
 				let response = await fetch(
-					"https://3000-ad4f3710-dc0d-4557-9241-a87d6a3f45f4.ws-eu01.gitpod.io/stages"
+					"https://3000-a15e8bc7-0b68-4bcc-85d9-d84116ba545c.ws-eu01.gitpod.io/stages"
 				);
 				response = await response.json();
 				setStore({

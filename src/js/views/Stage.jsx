@@ -62,7 +62,6 @@ export const Stage = () => {
 			if (store.stage != undefined && store.stage.length > 0) {
 				setStage(store.stage[numberOfStage]["kotokan_id"]);
 				setLevels(store.stage[numberOfStage]["levels"]);
-				console.log(numberOfStage);
 				setContent(store.stage[numberOfStage]["content"]);
 				setSPrueba(store.stage);
 			}
@@ -105,67 +104,77 @@ export const Stage = () => {
 	useEffect(
 		() => {
 			if (stage) {
-				setStudentRows(
-					store.students.map(stu => {
-						//console.log(store.students); // array 26 estudiantes
-						let gameStatus = [];
-						const gsStage = stu.game_status.stage[stage];
-						//console.log(gsStage); // counthachi y cada uno de los niveles de cada estudiante
-						if (gsStage !== undefined) {
-							gameStatus = levels.map((level, index) => {
-								const gsLevel = gsStage.level[level["id"].toString()];
-								//console.log(gsLevel); //Recorre cada nivel de cada estudiante y nos devuelve los problemas
-								const levelProblems = [];
-								for (let p = 1; p <= level["problemCount"]; p++) {
-									//console.log(level["problemCount"]); // numero de problema que tiene cada nivel
-									if (gsLevel !== undefined) {
-										//console.log(gsLevel); // aray con los problemas del gs
-										const gsProblem = gsLevel.problem[p.toString()];
-										if (gsProblem !== undefined) {
-											//console.log(gsProblem); // array con las dificultades de los levels
-											levelProblems.push(
-												<Problem key={index} problem={gsProblem} isLastProblem={false} />
-											);
-										} else {
-											// Si no tiene el problema, devuelve casilla vacia
-											levelProblems.push(<td key={index} />);
+				if (store.students.length > 0) {
+					setStudentRows(
+						store.students.map(stu => {
+							//console.log(store.students); // array 26 estudiantes
+							let gameStatus = [];
+							if (stu.game_status.stage !== undefined) {
+								const gsStage = stu.game_status.stage[stage];
+								//console.log(gsStage); // counthachi y cada uno de los niveles de cada estudiante
+								if (gsStage !== undefined) {
+									gameStatus = levels.map((level, index) => {
+										const gsLevel = gsStage.level[level["id"].toString()];
+										//console.log(gsLevel); //Recorre cada nivel de cada estudiante y nos devuelve los problemas
+										const levelProblems = [];
+										for (let p = 1; p <= level["problemCount"]; p++) {
+											//console.log(level["problemCount"]); // numero de problema que tiene cada nivel
+											if (gsLevel !== undefined) {
+												//console.log(gsLevel); // aray con los problemas del gs
+												const gsProblem = gsLevel.problem[p.toString()];
+												if (gsProblem !== undefined) {
+													//console.log(gsProblem); // array con las dificultades de los levels
+													levelProblems.push(
+														<Problem
+															key={index}
+															problem={gsProblem}
+															isLastProblem={false}
+														/>
+													);
+												} else {
+													// Si no tiene el problema, devuelve casilla vacia
+													levelProblems.push(<td key={index} />);
+												}
+											} else {
+												// Si no tiene el problema, devuelve casilla vacia
+												levelProblems.push(<td key={index} />);
+											}
 										}
-									} else {
-										// Si no tiene el problema, devuelve casilla vacia
-										levelProblems.push(<td key={index} />);
+										// console.log(levelProblems);
+										return levelProblems;
+									});
+								} else {
+									//   *********************************************************************** */ gs-stage
+									let totalProblemsCount = 0;
+									levels.map((level, index) => {
+										totalProblemsCount += level["problemCount"];
+									});
+									let emptyTd = [];
+									for (let i = 0; i < totalProblemsCount; i++) {
+										emptyTd.push(<td />);
 									}
+									return (
+										<tr key={stu.id}>
+											<th>{stu.name}</th>
+											{emptyTd}
+										</tr>
+									);
 								}
-								// console.log(levelProblems);
-								return levelProblems;
-							});
-						} else {
-							//   *********************************************************************** */ gs-stage
-							let totalProblemsCount = 0;
-							levels.map((level, index) => {
-								totalProblemsCount += level["problemCount"];
-							});
-							let emptyTd = [];
-							for (let i = 0; i < totalProblemsCount; i++) {
-								emptyTd.push(<td />);
+							} else {
+								return null;
 							}
+
+							//   *********************************************************************** */ gs-stage
+
 							return (
 								<tr key={stu.id}>
 									<th>{stu.name}</th>
-									{emptyTd}
+									{gameStatus}
 								</tr>
 							);
-						}
-
-						//   *********************************************************************** */ gs-stage
-
-						return (
-							<tr key={stu.id}>
-								<th>{stu.name}</th>
-								{gameStatus}
-							</tr>
-						);
-					})
-				);
+						})
+					);
+				}
 			}
 		},
 		[stage, store.students]
@@ -206,151 +215,163 @@ export const Stage = () => {
 		return isTrueOrFalse;
 	}
 
-	// console.log(store.stage[0]["content"]["name"]);
-	//console.log(content); //{header: "STAGE 1", name: "The Cross-Off Strategy"}
-
-	//console.log(store.stage[1]["content"]["name"]);
-
+	useEffect(
+		() => {
+			if (store.token !== "") {
+				actions.loadStudent();
+				actions.loadStage();
+			}
+		},
+		[store.token]
+	);
 	return (
 		<div>
-			<div>
-				{content != null &&
-					store.stage.length > 0 && (
-						<Dropdown className="content-name">
-							<Dropdown.Toggle className="btn-content-name">Class: {content.name}</Dropdown.Toggle>
+			{store.token !== "" ? (
+				<div>
+					<div>
+						{content != null &&
+							store.stage.length > 0 && (
+								<Dropdown className="content-name">
+									<Dropdown.Toggle className="btn-content-name">
+										Class: {content.name}
+									</Dropdown.Toggle>
 
-							<Dropdown.Menu>
-								<Dropdown.Item
-									onClick={() => {
-										setStage(store.stage[0]["kotokan_id"]);
-										setNumberOfStage(0);
-									}}>
-									Class: {store.stage[0]["content"]["name"]}
-								</Dropdown.Item>
-								<Dropdown.Item
-									onClick={() => {
-										setStage(store.stage[1]["kotokan_id"]);
-										setNumberOfStage(1);
-									}}>
-									Class: {store.stage[1]["content"]["name"]}
-								</Dropdown.Item>
-								<Dropdown.Item
-									onClick={() => {
-										setStage(store.stage[2]["kotokan_id"]);
-										setNumberOfStage(2);
-									}}>
-									Class: {store.stage[2]["content"]["name"]}
-								</Dropdown.Item>
-							</Dropdown.Menu>
-						</Dropdown>
-					)}
+									<Dropdown.Menu>
+										<Dropdown.Item
+											onClick={() => {
+												setStage(store.stage[0]["kotokan_id"]);
+												setNumberOfStage(0);
+											}}>
+											Class: {store.stage[0]["content"]["name"]}
+										</Dropdown.Item>
+										<Dropdown.Item
+											onClick={() => {
+												setStage(store.stage[1]["kotokan_id"]);
+												setNumberOfStage(1);
+											}}>
+											Class: {store.stage[1]["content"]["name"]}
+										</Dropdown.Item>
+										<Dropdown.Item
+											onClick={() => {
+												setStage(store.stage[2]["kotokan_id"]);
+												setNumberOfStage(2);
+											}}>
+											Class: {store.stage[2]["content"]["name"]}
+										</Dropdown.Item>
+									</Dropdown.Menu>
+								</Dropdown>
+							)}
 
-				<div className="scroll scrollbar-kotokan">
-					<table>
-						<thead>
-							<tr>
-								<th />
-								{headerLevels}
-							</tr>
+						<div className="scroll scrollbar-kotokan">
+							<table>
+								<thead>
+									<tr>
+										<th />
+										{headerLevels}
+									</tr>
 
-							<tr>
-								<th scope="row" abbr="Capacidad" className="text-uppercase">
-									students
-								</th>
-								{headerProblems}
-							</tr>
-						</thead>
-						<tbody>{studentRows}</tbody>
-					</table>
-				</div>
-
-				<br />
-			</div>
-			<br />
-			{/* *********************************  LEYENDAA  ************************** */}
-			{/* *********************************   ************************************    ************************** */}
-			<div className="legenda ">
-				<h5>Information</h5>
-
-				<div className="container-flex">
-					<div className="row">
-						<div className="col-sm">
-							{/* ************** */}
-							<div className="container">
-								<div className="row">
-									<div className="col-xs  legend d1"> </div>
-									<div className="col-sm ">Level 1</div>
-								</div>
-							</div>
-
-							{/* ************** */}
+									<tr>
+										<th scope="row" abbr="Capacidad" className="text-uppercase">
+											students
+										</th>
+										{headerProblems}
+									</tr>
+								</thead>
+								<tbody>{studentRows}</tbody>
+							</table>
 						</div>
-						<div className="col-sm">
-							{/* ************** */}
-							<div className="container">
-								<div className="row">
-									<div className="col-xs  legend d3" />
-									<div className="col-sm ">Level 3</div>
-								</div>
-							</div>
 
-							{/* ************** */}
-						</div>
-						<div className="col-sm">
-							{/* ************** */}
-							<div className="container">
-								<div className="row">
-									<div className="col-xs  lastPoint legend marcas">
-										<i className="fas fa-circle lastPoint" />
-									</div>
-									<div className="col-sm ">The highest problem resolved</div>
-								</div>
-							</div>
-
-							{/* ************** */}
-						</div>
+						<br />
 					</div>
 					<br />
-					{/* ******   ROW 2 ********* */}
-					<div className="row">
-						<div className="col-sm">
-							{/* ************** */}
-							<div className="container">
-								<div className="row">
-									<div className="col-xs  legend d2" />
-									<div className="col-sm  ">Level 2</div>
-								</div>
-							</div>
+					{/* *********************************  LEYENDAA  ************************** */}
+					{/* *********************************   ************************************    ************************** */}
+					<div className="legenda ">
+						<h5>Information</h5>
 
-							{/* ************** */}
-						</div>
-						<div className="col-sm">
-							{/* ************** */}
-							<div className="container">
-								<div className="row">
-									<div className="col-xs  legend d4" />
-									<div className="col-sm ">Level 4</div>
-								</div>
-							</div>
-
-							{/* ************** */}
-						</div>
-						<div className="col-sm">
-							{/* ************** */}
-							<div className="container">
-								<div className="row">
-									<div className="col-xs  legend marcas">
-										<i className="fa fa-times " aria-hidden="true" />
+						<div className="container-flex">
+							<div className="row">
+								<div className="col-sm">
+									{/* ************** */}
+									<div className="container">
+										<div className="row">
+											<div className="col-xs  legend d1"> </div>
+											<div className="col-sm ">Level 1</div>
+										</div>
 									</div>
-									<div className="col-sm ">Abandoned after trying</div>
+
+									{/* ************** */}
+								</div>
+								<div className="col-sm">
+									{/* ************** */}
+									<div className="container">
+										<div className="row">
+											<div className="col-xs  legend d3" />
+											<div className="col-sm ">Level 3</div>
+										</div>
+									</div>
+
+									{/* ************** */}
+								</div>
+								<div className="col-sm">
+									{/* ************** */}
+									<div className="container">
+										<div className="row">
+											<div className="col-xs  lastPoint legend marcas">
+												<i className="fas fa-circle lastPoint" />
+											</div>
+											<div className="col-sm ">The highest problem resolved</div>
+										</div>
+									</div>
+
+									{/* ************** */}
 								</div>
 							</div>
+							<br />
+							{/* ******   ROW 2 ********* */}
+							<div className="row">
+								<div className="col-sm">
+									{/* ************** */}
+									<div className="container">
+										<div className="row">
+											<div className="col-xs  legend d2" />
+											<div className="col-sm  ">Level 2</div>
+										</div>
+									</div>
 
-							{/* ************** */}
+									{/* ************** */}
+								</div>
+								<div className="col-sm">
+									{/* ************** */}
+									<div className="container">
+										<div className="row">
+											<div className="col-xs  legend d4" />
+											<div className="col-sm ">Level 4</div>
+										</div>
+									</div>
+
+									{/* ************** */}
+								</div>
+								<div className="col-sm">
+									{/* ************** */}
+									<div className="container">
+										<div className="row">
+											<div className="col-xs  legend marcas">
+												<i className="fa fa-times " aria-hidden="true" />
+											</div>
+											<div className="col-sm ">Abandoned after trying</div>
+										</div>
+									</div>
+
+									{/* ************** */}
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			) : (
+				<div>No estoy logeado </div>
+			)}
 		</div>
 	);
 };

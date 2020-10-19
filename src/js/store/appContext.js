@@ -21,7 +21,7 @@ const injectContext = PassedComponent => {
 			/* state.actions.loadUsers();
             state.actions.loadClasses(); */
 			state.actions.loadStage();
-			state.actions.loadStudent();
+			/* state.actions.loadStudent(); */
 		}, []);
 
 		return (

@@ -13,6 +13,8 @@ import { Context } from "../store/appContext";
 export const Home = () => {
 	const { actions, store } = useContext(Context);
 
+	console.log(store.token);
+
 	return (
 		<>
 			<div className="container-fluid">
