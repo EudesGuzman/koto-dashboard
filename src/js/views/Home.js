@@ -23,7 +23,7 @@ export const Home = () => {
 			{isLoggedIn ? (
 				<div className="container-fluid">
 					<div className="row">
-						<div className="col-sm">
+						<div className="col-sm  ">
 							<div className="card d-flex flex-row">
 								<div className="card-body">
 									<p className="card-title text-uppercase font-weight-bold">School Details</p>
@@ -40,7 +40,7 @@ export const Home = () => {
 						</div>
 
 						<div className="col-sm">
-							<div className="cardTeacher d-flex flex-row">
+							<div className="cardTeacher d-flex flex-row ">
 								<div className="card-body">
 									<p className="card-title text-uppercase font-weight-bold text-secondary">
 										Teacher Details
