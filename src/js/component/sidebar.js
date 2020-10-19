@@ -24,7 +24,7 @@ export const SideBar = () => {
 					</Link>
 				</li>
 				<li className="nav-item">
-					<Link className="nav-link" a="/problems">
+					<Link className="nav-link" to="/problems">
 						<LocalParkingIcon /> Problems
 					</Link>
 				</li>

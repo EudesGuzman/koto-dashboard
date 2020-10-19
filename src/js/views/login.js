@@ -44,8 +44,6 @@ const Login = props => {
 					setEmail("");
 					setPass("");
 					setError(null);
-					/* <Redirect to={"/" }/>; 
-					props.history.push("/"); */
 				}
 			} catch (error) {
 				console.log(error);

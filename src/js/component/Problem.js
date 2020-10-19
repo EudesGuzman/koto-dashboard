@@ -26,6 +26,7 @@ export const Problem = props => {
 				<td style={{ backgroundColor: color }}>
 					<i className="fas fa-circle lastPoint" />
 				</td>
+                
 			);
 		} else {
 			if (difficulty[1].started && !difficulty[1].completed) {
@@ -33,9 +34,10 @@ export const Problem = props => {
 					<td className="problem-not-finished ">
 						<i className="fa fa-times " aria-hidden="true" />
 					</td>
+                  
 				);
 			} else {
-				return <td style={{ backgroundColor: color }} />;
+				return (<td style={{ backgroundColor: color }} />);
 			}
 		} //else
 	}

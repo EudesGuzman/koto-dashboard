@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { Problem } from "../component/Problem";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import { withRouter, Redirect } from "react-router-dom";
 
 function getLastLevel(stageElement) {
 	let string_levels = Object.keys(stageElement.level);
@@ -380,7 +381,7 @@ export const Stage = () => {
 					</div>
 				</div>
 			) : (
-				<div>No estoy logeado </div>
+				<Redirect to={"/login"} />
 			)}
 		</div>
 	);
