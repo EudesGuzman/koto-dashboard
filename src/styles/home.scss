@@ -2,7 +2,7 @@
     color: #fdfeff;
     background: #047cfc;
     border-radius: 3px;
-    margin-bottom: 5px;
+    margin-bottom: 3%;
     min-height: 160px;
     
 }
@@ -31,7 +31,17 @@
     margin-top: 6%;
 } 
 
+.limit{
+    max-width: 424px;
 
+}
+.redondo{
+    background-color: grey;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    align-items: center;
+}
 //**********************
 /* 
 .card{

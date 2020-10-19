@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.scss";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import logo from "../../img/icon-kotokan.png";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { actions, store } = useContext(Context);
 	return (
 		<div className="navbar">
 			<div className="navbar__left">
@@ -22,7 +24,7 @@ export const Navbar = () => {
 			</div>
 
 			<div>
-				Log out <ExitToAppIcon />{" "}
+				Log out <ExitToAppIcon />
 			</div>
 		</div>
 	);

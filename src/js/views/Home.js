@@ -91,9 +91,38 @@ export const Home = () => {
 						))}
 
 						<div className="col-sm d-flex align-items-center">
-							<button type="button" className="btn btn-primary text-uppercase" disabled>
-								+ Add a class
-							</button>
+							<div className="col-sm limit pl-0">
+								<div className="cardTeacher d-flex flex-row">
+									<div className="card-body card-teacher">
+										<h5 className="card-text font-weight-bold">
+											{store.user.length > 0 ? store.user[0].name : ""}
+											Classname 1
+										</h5>
+										{/* <p className="card-title text-uppercase font-weight-bold text-secondary">
+										Teacher Details
+									</p> */}
+										{/* //[0].name puede funcionar*/}
+
+										<h6 className="text-secondary">Students in this class</h6>
+										<p className="text-secondary mt-4 mb-0">18</p>
+									</div>
+
+									<div className="card__right ">
+										{/* <img src={teacher} alt="" className="avatar-teacher" /> */}
+										<div className="redondo d-flex justify-content-center">
+											<i className="fas fa-graduation-cap fa-3x" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className="col-sm d-flex align-items-center">
+								<button type="button" className="btn btn-primary text-uppercase" disabled>
+									+Add a class
+								</button>
+							</div>
+							{/* <button type="button" className="btn btn-primary text-uppercase" disabled>
+							+ Add a class
+						</button> */}
 						</div>
 					</div>
 				</div>
