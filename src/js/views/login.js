@@ -53,7 +53,7 @@ const Login = props => {
 	return (
 		<div>
 			{isLoggedIn ? (
-				<Redirect to={"/classname"} />
+				<Redirect to={"/"} />
 			) : (
 				<div className="login">
 					<div className="login__container">
