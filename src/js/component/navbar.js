@@ -24,7 +24,9 @@ export const Navbar = () => {
 			</div>
 
 			<div>
-				Log out <ExitToAppIcon />
+				<button onClick={() => actions.logOut()}>
+					Log out <ExitToAppIcon />
+				</button>
 			</div>
 		</div>
 	);

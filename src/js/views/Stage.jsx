@@ -60,6 +60,16 @@ export const Stage = () => {
 
 	useEffect(
 		() => {
+			if (store.token !== "") {
+				actions.loadStudent();
+				actions.loadStage();
+			}
+		},
+		[store.token]
+	);
+
+	useEffect(
+		() => {
 			if (store.stage != undefined && store.stage.length > 0) {
 				setStage(store.stage[numberOfStage]["kotokan_id"]);
 				setLevels(store.stage[numberOfStage]["levels"]);
@@ -131,10 +141,8 @@ export const Stage = () => {
 												const gsProblem = gsLevel.problem[p.toString()];
 												if (gsProblem !== undefined) {
 													//console.log(gsProblem); // array con las dificultades de los levels
-													console.log("levele ->>>>>>", lastLevele, index + 1);
-													console.log("problem -->>", lastProbleme, p);
+
 													const trueOrFalse = lastLevele === index + 1 && lastProbleme === p;
-													console.log("trueorFlase--->>", trueOrFalse);
 													levelProblems.push(
 														<Problem
 															key={index}
@@ -191,50 +199,6 @@ export const Stage = () => {
 		[stage, store.students]
 	);
 
-	function getProblems(student) {
-		let problems = [];
-		const stage = student.game_status.stage["1"];
-
-		Object.keys(stage.level).map(e => {
-			const level = stage.level[e];
-			Object.keys(level.problem).map(p => {
-				problems.push(level.problem[p]);
-			});
-		});
-
-		return problems;
-	}
-
-	function getTrueOrFalse(student, lastLevel, lastProblem) {
-		const stage = student.game_status.stage["1"];
-		let isTrueOrFalse = [];
-
-		Object.keys(stage.level).map(e => {
-			const level = stage.level[e];
-
-			Object.keys(level.problem).map(p => {
-				const problem = level.problem[p];
-
-				if (e === lastLevel && p === lastProblem) {
-					isTrueOrFalse.push(true);
-				} else {
-					isTrueOrFalse.push(false);
-				}
-			});
-		});
-
-		return isTrueOrFalse;
-	}
-
-	useEffect(
-		() => {
-			if (store.token !== "") {
-				actions.loadStudent();
-				actions.loadStage();
-			}
-		},
-		[store.token]
-	);
 	return (
 		<div>
 			{store.token !== "" ? (

@@ -6,7 +6,6 @@ export const Problem = props => {
 	} else {
 		const { completed, difficulty } = props.problem;
 		const { isLastProblem, started, finished } = props;
-		console.log(isLastProblem);
 
 		let color = "";
 		const colors = { "1": "#f8e71c", "2": "#f5a623", "3": "#8b470a", "4": "#4a4a4a" };

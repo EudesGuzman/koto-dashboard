@@ -8,14 +8,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: "",
 			user: [],
 			courses: [],
+			schools: [],
 			students: [],
-			stage: []
+			stage: [],
+			teacher: []
 		},
 
 		actions: {
 			login: async (email, password) => {
 				let response = await fetch(
-					"https://3000-a15e8bc7-0b68-4bcc-85d9-d84116ba545c.ws-eu01.gitpod.io/login",
+					"https://3000-b50ba824-9f76-4eba-a4e5-5a1cb7ad3840.ws-eu01.gitpod.io/login",
 					{
 						method: "POST",
 						headers: { Authorization: "Basic " + require("base-64").encode(email + ":" + password) }
@@ -40,24 +42,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadClasses: async () => {
-				let response = await fetch(
-					"https://3000-ce9f707b-14a0-4525-bc1a-75c19b455643.ws-eu01.gitpod.io/courses"
-				);
-				response = await response.json();
-
-				setStore({
-					courses: response
-				});
-			},
-			loadStudent: async () => {
-				let urlExt = "https://3000-a15e8bc7-0b68-4bcc-85d9-d84116ba545c.ws-eu01.gitpod.io/students";
+				let urlExt = "https://3000-b50ba824-9f76-4eba-a4e5-5a1cb7ad3840.ws-eu01.gitpod.io/schools";
 
 				var myHeaders = new Headers();
 
 				/* const token = getStore(); */
 				const token = getStore().token;
-
-				console.log(token);
 
 				myHeaders.append("X-Access-Tokens", token);
 				var requestOptions = {
@@ -70,6 +60,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let result = await res.json();
 					console.log(result);
 					setStore({
+						schools: result
+					});
+				} catch (error) {
+					console.log("error", error);
+				}
+			},
+			loadStudent: async () => {
+				let urlExt = "https://3000-b50ba824-9f76-4eba-a4e5-5a1cb7ad3840.ws-eu01.gitpod.io/students";
+
+				var myHeaders = new Headers();
+
+				/* const token = getStore(); */
+				const token = getStore().token;
+
+				myHeaders.append("X-Access-Tokens", token);
+				var requestOptions = {
+					method: "GET",
+					headers: myHeaders
+				};
+
+				try {
+					let res = await fetch(urlExt, requestOptions);
+					let result = await res.json();
+
+					setStore({
 						students: result
 					});
 				} catch (error) {
@@ -78,12 +93,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadStage: async () => {
 				let response = await fetch(
-					"https://3000-a15e8bc7-0b68-4bcc-85d9-d84116ba545c.ws-eu01.gitpod.io/stages"
+					"https://3000-b50ba824-9f76-4eba-a4e5-5a1cb7ad3840.ws-eu01.gitpod.io/stages"
 				);
 				response = await response.json();
 				setStore({
 					stage: response
 				});
+			},
+			logut: async () => {
+				setStore({
+					token: ""
+				});
+			},
+			loadTeacher: async () => {
+				let urlExt = "https://3000-b50ba824-9f76-4eba-a4e5-5a1cb7ad3840.ws-eu01.gitpod.io/teachers";
+
+				var myHeaders = new Headers();
+
+				/* const token = getStore(); */
+				const token = getStore().token;
+
+				myHeaders.append("X-Access-Tokens", token);
+				var requestOptions = {
+					method: "GET",
+					headers: myHeaders
+				};
+
+				try {
+					let res = await fetch(urlExt, requestOptions);
+					let result = await res.json();
+					console.log(result);
+					setStore({
+						teacher: result
+					});
+				} catch (error) {
+					console.log("error", error);
+				}
 			}
 		}
 	};

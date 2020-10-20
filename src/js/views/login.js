@@ -17,16 +17,13 @@ const Login = props => {
 	const { actions, store } = useContext(Context);
 
 	const procesarDatos = e => {
-		console.log(e);
 		e.preventDefault();
 
 		if (!email.trim()) {
-			//console.log("ingrese email")
 			setError("ingrese email");
 			return;
 		}
 		if (!pass.trim()) {
-			//console.log("ingrese pass")
 			setError("ingrese pass");
 			return;
 		}
@@ -40,7 +37,6 @@ const Login = props => {
 				const res = store.token;
 
 				if (res != "") {
-					console.log(res);
 					setEmail("");
 					setPass("");
 					setError(null);
