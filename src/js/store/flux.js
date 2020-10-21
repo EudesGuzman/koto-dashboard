@@ -16,14 +16,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		actions: {
 			login: async (email, password) => {
-				let response = await fetch(
-					"https://3000-ccbd7388-9d0c-4438-90c9-9aaac0ef722f.ws-eu01.gitpod.io/login",
-					{
-						method: "POST",
-						headers: { Authorization: "Basic " + require("base-64").encode(email + ":" + password) }
-						//headers:{"X-Access-Tokens": getStore().token}
-					}
-				);
+				//const urlLogin = urlBase.concat("/login");
+				let response = await fetch(process.env.BACKEND_URL + "/login", {
+					method: "POST",
+					headers: { Authorization: "Basic " + require("base-64").encode(email + ":" + password) }
+					//headers:{"X-Access-Tokens": getStore().token}
+				});
 
 				response = await response.json();
 
@@ -31,9 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadUsers: async () => {
-				let response = await fetch(
-					"https://3000-a32b9492-7b21-4054-a2a1-a87fb7bf84f2.ws-eu01.gitpod.io/teachers"
-				);
+				let response = await fetch(process.env.BACKEND_URL + "/teachers");
 				response = await response.json();
 
 				setStore({
@@ -42,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadClasses: async () => {
-				let urlExt = "https://3000-ccbd7388-9d0c-4438-90c9-9aaac0ef722f.ws-eu01.gitpod.io/schools";
+				let urlExt = process.env.BACKEND_URL + "/schools";
 
 				var myHeaders = new Headers();
 
@@ -67,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			loadStudent: async () => {
-				let urlExt = "https://3000-ccbd7388-9d0c-4438-90c9-9aaac0ef722f.ws-eu01.gitpod.io/students";
+				let urlExt = process.env.BACKEND_URL + "/students";
 
 				var myHeaders = new Headers();
 
@@ -92,9 +88,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			loadStage: async () => {
-				let response = await fetch(
-					"https://3000-ccbd7388-9d0c-4438-90c9-9aaac0ef722f.ws-eu01.gitpod.io/stages"
-				);
+				let response = await fetch(process.env.BACKEND_URL + "/stages");
 				response = await response.json();
 				setStore({
 					stage: response
@@ -106,7 +100,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			loadTeacher: async () => {
-				let urlExt = "https://3000-ccbd7388-9d0c-4438-90c9-9aaac0ef722f.ws-eu01.gitpod.io/teachers";
+				let urlExt = process.env.BACKEND_URL + "/teachers";
 
 				var myHeaders = new Headers();
 
